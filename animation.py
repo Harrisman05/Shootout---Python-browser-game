@@ -54,6 +54,32 @@ bottom_left_saveparadox_1_gif = makeSprite('gifs/bottom_left_gifs/bottom_left_sa
 bottom_left_saveparadox_1_end_frame = pygame.image.load('gifs/bottom_left_gifs/bottom_left_saveparadox_1_end_frame.png')
 
 
+# top left sprite sheets + end frames
+
+top_left_goal_1_gif = makeSprite('gifs/top_left_gifs/top_left_goal_1_gif.png', 8)
+top_left_goal_1_end_frame = pygame.image.load('gifs/top_left_gifs/top_left_goal_1_end_frame.png')
+
+top_left_save_1_gif = makeSprite('gifs/top_left_gifs/top_left_save_1_gif.png', 8)
+top_left_save_1_end_frame = pygame.image.load('gifs/top_left_gifs/top_left_save_1_end_frame.png')
+
+top_left_crossbar_1_gif = makeSprite('gifs/top_left_gifs/top_left_crossbar_1_gif.png', 8)
+top_left_crossbar_1_end_frame = pygame.image.load('gifs/top_left_gifs/top_left_crossbar_1_end_frame.png')      
+
+#top_left_miss_1_gif = makeSprite('gifs/top_left_gifs/top_left_miss_1_gif.png', 8)                      # missing gif
+#top_left_miss_1_end_frame = pygame.image.load('gifs/top_left_gifs/top_left_miss_1_end_frame.png')      # missing gif
+
+#top_left_saveparadox_1_gif = makeSprite('gifs/top_left_gifs/top_left_saveparadox_1_gif.png', 8)        # missing gif
+#top_left_saveparadox_1_end_frame = pygame.image.load('gifs/top_left_gifs/top_left_saveparadox_1_end_frame.png') # missing gif
+
+
+
+
+
+
+
+
+
+
 
 Shot_selection_gif = makeSprite('gifs/Shot selector - 6 balls - sprite sheet.png', 28) #28 denotes to the makeSprite function that there are 32 different sprites in this image
 bottom_right_goal_gif = makeSprite('gifs/bottom right goal.png', 10)
@@ -148,7 +174,7 @@ def fade(gif_end_frame_sprite, width, height):
 ########################################################################################################################
 ########################################################################################################################
 def game_logic(player_choice):
-
+#                                                   bl    tl    bm    tm    br    tr   post  cbar  miss
     goalie_choice = random.choices(areas, weights=[0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.11, 0.11, 0.06], k=1)
     goalie_choice = goalie_choice[0]
     killSprite(Shot_selection_gif)
@@ -170,17 +196,19 @@ def game_logic(player_choice):
             main_screen()
         else:
             print('GOAL! You rifle the ball in the left corner and it nestles in the net. Goal!')
-            counters.goal_score() # if goal is scored, pass all bottom left goal outcomes thru random number generator function and output on of the goal outcomes, different goal each time its scored
-            gif_generation(bottom_left_goal_1_gif, 300, 8, bottom_left_goal_1_end_frame) ##########################################################################################################################
+            counters.goal_score() # if goal is scored, pass all bottom left goal outcomes thru random number generator function and output on of the goal outcomes
+            gif_generation(bottom_left_goal_1_gif, 300, 8, bottom_left_goal_1_end_frame)
             main_screen()
     elif player_choice == areas[1]:  # Goalie diving top left
         if goalie_choice == areas[1]:
             print('SAVE! The keeper leaps to the left corner and punches the ball clear!')
             counters.save_made()
+            gif_generation(top_left_save_1_gif, 300, 8, top_left_save_1_end_frame)
             main_screen()
         else:
             print('GOAL! You smash the ball into the top left corner!')
             counters.goal_score()
+            gif_generation(top_left_goal_1_gif, 300, 8, top_left_goal_1_end_frame)
             main_screen()
     elif player_choice == areas[2]:  # Goalie staying bottom middle
         if goalie_choice == areas[2]:
@@ -272,6 +300,7 @@ def crossbar_hit(player_choice):
     elif player_choice == areas[1]:  # hitting the left part of the crossbar
         print('CROSSBAR! The ball flys high and to the left but clips the crossbar and soars into the fans!')
         counters.crossbar_hit()
+        gif_generation(top_left_crossbar_1_gif, 300, 8, top_left_crossbar_1_end_frame)
         main_screen()
     elif player_choice == areas[2]:  # hitting the middle of the crossbar
         print('CROSSBAR! The ball is smashed down the middle and canons off the crossbar!')
