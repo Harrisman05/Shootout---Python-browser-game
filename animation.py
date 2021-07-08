@@ -50,6 +50,9 @@ bottom_left_post_1_end_frame = pygame.image.load('gifs/bottom_left_gifs/bottom_l
 bottom_left_miss_1_gif = makeSprite('gifs/bottom_left_gifs/bottom_left_miss_1_gif.png', 8)
 bottom_left_miss_1_end_frame = pygame.image.load('gifs/bottom_left_gifs/bottom_left_miss_1_end_frame.png')
 
+bottom_left_saveparadox_1_gif = makeSprite('gifs/bottom_left_gifs/bottom_left_saveparadox_1_gif.png', 8)
+bottom_left_saveparadox_1_end_frame = pygame.image.load('gifs/bottom_left_gifs/bottom_left_saveparadox_1_end_frame.png')
+
 
 
 Shot_selection_gif = makeSprite('gifs/Shot selector - 6 balls - sprite sheet.png', 28) #28 denotes to the makeSprite function that there are 32 different sprites in this image
@@ -256,6 +259,7 @@ def crossbar_hit(player_choice):
     if player_choice == areas[0]:
         print('SAVE! The keeper manages to drop low and tip the ball around the left post!')  # bottom left and post paradox
         counters.save_made()
+        gif_generation(bottom_left_saveparadox_1_gif, 300, 8, bottom_left_saveparadox_1_end_frame)
         main_screen()
     elif player_choice == areas[2]:  # bottom middle and crossbar paradox
         print('SAVE! The keeper stays rooted to the spot and denys the ball an introduction to the net!')
