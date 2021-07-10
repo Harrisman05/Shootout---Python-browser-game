@@ -53,6 +53,7 @@ bottom_left_miss_1_end_frame = pygame.image.load('gifs/bottom_left_gifs/bottom_l
 bottom_left_saveparadox_1_gif = makeSprite('gifs/bottom_left_gifs/bottom_left_saveparadox_1_gif.png', 8)
 bottom_left_saveparadox_1_end_frame = pygame.image.load('gifs/bottom_left_gifs/bottom_left_saveparadox_1_end_frame.png')
 
+##############################################################################################################################################################################
 
 # top left sprite sheets + end frames
 
@@ -71,6 +72,8 @@ top_left_crossbar_1_end_frame = pygame.image.load('gifs/top_left_gifs/top_left_c
 #top_left_saveparadox_1_gif = makeSprite('gifs/top_left_gifs/top_left_saveparadox_1_gif.png', 8)        # missing gif
 #top_left_saveparadox_1_end_frame = pygame.image.load('gifs/top_left_gifs/top_left_saveparadox_1_end_frame.png') # missing gif
 
+##############################################################################################################################################################################
+
 # top middle sprite sheets + end frames
 
 top_middle_goal_1_gif = makeSprite('gifs/top_middle_gifs/top_middle_goal_1_gif.png', 8)
@@ -88,18 +91,66 @@ top_middle_miss_1_end_frame = pygame.image.load('gifs/top_middle_gifs/top_middle
 #top_middle_saveparadox_1_gif = makeSprite('gifs/top_middle_gifs/top_middle_saveparadox_1_gif.png', 8)        # missing gif
 #top_middle_saveparadox_1_end_frame = pygame.image.load('gifs/top_middle_gifs/top_middle_saveparadox_1_end_frame.png') # missing gif
 
+##############################################################################################################################################################################
 
+# bottom middle sprite sheets + end frames
 
+bottom_middle_goal_1_gif = makeSprite('gifs/bottom_middle_gifs/bottom_middle_goal_1_gif.png', 8)
+bottom_middle_goal_1_end_frame = pygame.image.load('gifs/bottom_middle_gifs/bottom_middle_goal_1_end_frame.png')
 
+bottom_middle_save_1_gif = makeSprite('gifs/bottom_middle_gifs/bottom_middle_save_1_gif.png', 8)  # missing gif
+bottom_middle_save_1_end_frame = pygame.image.load('gifs/bottom_middle_gifs/bottom_middle_save_1_end_frame.png')  # missing gif
 
+bottom_middle_crossbarparadox_2_gif = makeSprite('gifs/bottom_middle_gifs/bottom_middle_crossbarparadox_2_gif.png', 8)
+bottom_middle_crossbarparadox_2_end_frame = pygame.image.load('gifs/bottom_middle_gifs/bottom_middle_crossbarparadox_2_end_frame.png')
 
+bottom_middle_miss_3_gif = makeSprite('gifs/bottom_middle_gifs/bottom_middle_miss_3_gif.png', 8)  ### png because size conversion can mess up bit depth and then the fade away is not lined up with end frame for some unknown reason
+bottom_middle_miss_3_end_frame = pygame.image.load('gifs/bottom_middle_gifs/bottom_middle_miss_3_end_frame.png')
 
+bottom_middle_postparadox_4_gif = makeSprite('gifs/bottom_middle_gifs/bottom_middle_postparadox_4_gif.png', 8)        # missing gif
+bottom_middle_postparadox_4_end_frame = pygame.image.load('gifs/bottom_middle_gifs/bottom_middle_postparadox_4_end_frame.png') # missing gif
 
+##############################################################################################################################################################################
 
-Shot_selection_gif = makeSprite('gifs/Shot selector - 6 balls - sprite sheet.png', 28) #28 denotes to the makeSprite function that there are 32 different sprites in this image
-bottom_right_goal_gif = makeSprite('gifs/bottom right goal.png', 10)
+# bottom right sprite sheets + end frames
 
-top_middle_goal_gif = ('gifs/top middle goal.png', 8)
+bottom_right_goal_1_gif = makeSprite('gifs/bottom_right_gifs/bottom_right_goal_1_gif.png', 8)
+bottom_right_goal_1_end_frame = pygame.image.load('gifs/bottom_right_gifs/bottom_right_goal_1_end_frame.png')
+
+bottom_right_save_1_gif = makeSprite('gifs/bottom_right_gifs/bottom_right_save_1_gif.png', 8)
+bottom_right_save_1_end_frame = pygame.image.load('gifs/bottom_right_gifs/bottom_right_save_1_end_frame.png')
+
+bottom_right_post_1_gif = makeSprite('gifs/bottom_right_gifs/bottom_right_post_1_gif.png', 8)
+bottom_right_post_1_end_frame = pygame.image.load('gifs/bottom_right_gifs/bottom_right_post_1_end_frame.png')
+#
+bottom_right_miss_1_gif = makeSprite('gifs/bottom_right_gifs/bottom_right_miss_1_gif.png', 8)
+bottom_right_miss_1_end_frame = pygame.image.load('gifs/bottom_right_gifs/bottom_right_miss_1_end_frame.png')
+#
+bottom_right_crossbarparadox_2_gif = makeSprite('gifs/bottom_right_gifs/bottom_right_crossbarparadox_2_gif.png', 8)
+bottom_right_crossbarparadox_2_end_frame = pygame.image.load('gifs/bottom_right_gifs/bottom_right_crossbarparadox_2_end_frame.png')
+
+##############################################################################################################################################################################
+
+# top right sprite sheets + end frames
+
+top_right_goal_1_gif = makeSprite('gifs/top_right_gifs/top_right_goal_1_gif.png', 8)
+top_right_goal_1_end_frame = pygame.image.load('gifs/top_right_gifs/top_right_goal_1_end_frame.png')
+
+top_right_save_1_gif = makeSprite('gifs/top_right_gifs/top_right_save_1_gif.png', 8)
+top_right_save_1_end_frame = pygame.image.load('gifs/top_right_gifs/top_right_save_1_end_frame.png')
+
+top_right_crossbar_1_gif = makeSprite('gifs/top_right_gifs/top_right_crossbar_1_gif.png', 8)
+top_right_crossbar_1_end_frame = pygame.image.load('gifs/top_right_gifs/top_right_crossbar_1_end_frame.png')
+
+top_right_miss_1_gif = makeSprite('gifs/top_right_gifs/top_right_miss_1_gif.png', 8)                      # similar to crossbar gif, needs redoing
+top_right_miss_1_end_frame = pygame.image.load('gifs/top_right_gifs/top_right_miss_1_end_frame.png')      # similar to crossbar gif, needs redoing
+
+#top_right_saveparadox_1_gif = makeSprite('gifs/top_right_gifs/top_right_saveparadox_1_gif.png', 8)        # missing gif
+#top_right_saveparadox_1_end_frame = pygame.image.load('gifs/top_right_gifs/top_right_saveparadox_1_end_frame.png') # missing gif
+
+##############################################################################################################################################################################
+
+Shot_selection_gif = makeSprite('gifs/Shot selector - 6 balls - sprite sheet.png', 28) #28 denotes to the makeSprite function that there are 28 different sprites in this image
 top_middle_goal_sound = mixer.Sound('what_a_hit_son.wav')
 running = True
 font = pygame.font.Font('freesansbold.ttf', 15) # pygame font, parameter are font type and size
@@ -229,10 +280,12 @@ def game_logic(player_choice):
         if goalie_choice == areas[2]:
             print('SAVE! The keeper reads you and blocks the shot coming directly at him!')
             counters.save_made()
+            gif_generation(bottom_middle_save_1_gif, 300, 8, bottom_middle_save_1_end_frame)
             main_screen()
         else:
             print('GOAL! You double bluff the keeper and dink the ball down the middle!')
             counters.goal_score()
+            gif_generation(bottom_middle_goal_1_gif, 300, 8, bottom_middle_goal_1_end_frame)
             main_screen()
     elif player_choice == areas[3]:  # Goalie staying top middle
         if goalie_choice == areas[3]:
@@ -248,20 +301,23 @@ def game_logic(player_choice):
         if goalie_choice == areas[4]:
             print('SAVE! The keeper pounces to the right and deflects the ball away!')
             counters.save_made()
+            gif_generation(bottom_right_save_1_gif, 300, 8, bottom_right_save_1_end_frame)
             main_screen()
         else:
             print('GOAL! You arrow the ball into the bottom right corner, keeper stood no chance!')
             counters.goal_score()
-            gif_generation(bottom_right_goal_gif, 400, 10) ######################################################################################################################################
+            gif_generation(bottom_right_goal_1_gif, 300, 8, bottom_right_goal_1_end_frame)
             main_screen()
     elif player_choice == areas[5]:  # Goalie diving top right
         if goalie_choice == areas[5]:
             print('SAVE! The keeper reaches high and manages to redirect the ball over the crossbar!')
             counters.save_made()
+            gif_generation(top_right_save_1_gif, 300, 8, top_right_save_1_end_frame)
             main_screen()
         else:
             print('GOAL! You crack the ball into the top right corner of the goal!')
             counters.goal_score()
+            gif_generation(top_right_goal_1_gif, 300, 8, top_right_goal_1_end_frame)
             main_screen()
 
 ########################################################################################################################
@@ -281,6 +337,7 @@ def complete_miss(player_choice):
     elif player_choice == areas[2]:
         print('SAVE! Your shot is easily gathered by the goalie!')  # 'missing' bottom low paradox - keeper gathers the shot - bottom low
         counters.save_made()
+        gif_generation(bottom_middle_miss_3_gif, 300, 8, bottom_middle_miss_3_end_frame)
         main_screen()
     elif player_choice == areas[3]:
         print('MISS! Your shot is blazed over the crossbar!')  # missing over the crossbar - top middle
@@ -290,10 +347,12 @@ def complete_miss(player_choice):
     elif player_choice == areas[4]:
         print('MISS! Your shot trickles passed the post!')  # missing the right post low - bottom right
         counters.complete_miss()
+        gif_generation(bottom_right_miss_1_gif, 300, 8, bottom_right_miss_1_end_frame)
         main_screen()
     elif player_choice == areas[5]:
         print('MISS! Your shot flys high passed the post!')  # missing the right post high - top right
         counters.complete_miss()
+        gif_generation(top_right_miss_1_gif, 300, 8, top_right_miss_1_end_frame)
         main_screen()
 
 ########################################################################################################################
@@ -308,10 +367,12 @@ def crossbar_hit(player_choice):
     elif player_choice == areas[2]:  # bottom middle and crossbar paradox
         print('SAVE! The keeper stays rooted to the spot and denys the ball an introduction to the net!')
         counters.save_made()
+        gif_generation(bottom_middle_crossbarparadox_2_gif, 300, 8, bottom_middle_crossbarparadox_2_end_frame)
         main_screen()
     elif player_choice == areas[4]:  # bottom right and crossbar paradox
         print('SAVE! The keeper gets a fingertip on the ball and nudges it around the post!')
         counters.save_made()
+        gif_generation(bottom_right_crossbarparadox_2_gif, 300, 8, bottom_right_crossbarparadox_2_end_frame)
         main_screen()
     elif player_choice == areas[1]:  # hitting the left part of the crossbar
         print('CROSSBAR! The ball flys high and to the left but clips the crossbar and soars into the fans!')
@@ -326,6 +387,7 @@ def crossbar_hit(player_choice):
     elif player_choice == areas[5]:  # hitting the right part of the crossbar
         print('CROSSBAR! The ball flys high to the right and rattles the top of the crossbar!')
         counters.crossbar_hit()
+        gif_generation(top_right_crossbar_1_gif, 300, 8, top_right_crossbar_1_end_frame)
         main_screen()
 
 ########################################################################################################################
@@ -335,6 +397,7 @@ def post_hit(player_choice):
     if player_choice == areas[2]:  # bottom middle and post paradox
         print('SAVE! The keeper began to dive but managed a save with his trailing leg!')
         counters.save_made()
+        gif_generation(bottom_middle_postparadox_4_gif, 300, 8, bottom_middle_postparadox_4_end_frame)
         main_screen()
     elif player_choice == areas[3]:  # top middle and post paradox
         print('SAVE! The keeper managed to claw the ball away with a finger-tip save!')
@@ -352,6 +415,7 @@ def post_hit(player_choice):
     elif player_choice == areas[4]:  # hitting the bottom right post
         print('POST! The daisy cutter of a shot looks promising but rockets off the bottom of the post!')
         counters.post_hit()
+        gif_generation(bottom_right_post_1_gif, 300, 8, bottom_right_post_1_end_frame)
         main_screen()
     elif player_choice == areas[5]:  # hitting the top right post
         print('POST! The keeper is motionless as he watches the ball ricochet off the post!')
