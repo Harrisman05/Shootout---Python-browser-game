@@ -71,7 +71,22 @@ top_left_crossbar_1_end_frame = pygame.image.load('gifs/top_left_gifs/top_left_c
 #top_left_saveparadox_1_gif = makeSprite('gifs/top_left_gifs/top_left_saveparadox_1_gif.png', 8)        # missing gif
 #top_left_saveparadox_1_end_frame = pygame.image.load('gifs/top_left_gifs/top_left_saveparadox_1_end_frame.png') # missing gif
 
+# top middle sprite sheets + end frames
 
+top_middle_goal_1_gif = makeSprite('gifs/top_middle_gifs/top_middle_goal_1_gif.png', 8)
+top_middle_goal_1_end_frame = pygame.image.load('gifs/top_middle_gifs/top_middle_goal_1_end_frame.png')
+
+# top_middle_save_1_gif = makeSprite('gifs/top_middle_gifs/top_middle_save_1_gif.png', 8)  # missing gif
+# top_middle_save_1_end_frame = pygame.image.load('gifs/top_middle_gifs/top_middle_save_1_end_frame.png')  # missing gif
+
+top_middle_crossbar_1_gif = makeSprite('gifs/top_middle_gifs/top_middle_crossbar_1_gif.png', 8)
+top_middle_crossbar_1_end_frame = pygame.image.load('gifs/top_middle_gifs/top_middle_crossbar_1_end_frame.png')
+
+top_middle_miss_1_gif = makeSprite('gifs/top_middle_gifs/top_middle_miss_1_gif.jpg', 8)  ### jpg because size conversion can mess up bit depth and then the fade away is not lined up with end frame for some unknown reason
+top_middle_miss_1_end_frame = pygame.image.load('gifs/top_middle_gifs/top_middle_miss_1_end_frame.jpg')
+
+#top_middle_saveparadox_1_gif = makeSprite('gifs/top_middle_gifs/top_middle_saveparadox_1_gif.png', 8)        # missing gif
+#top_middle_saveparadox_1_end_frame = pygame.image.load('gifs/top_middle_gifs/top_middle_saveparadox_1_end_frame.png') # missing gif
 
 
 
@@ -227,7 +242,7 @@ def game_logic(player_choice):
         else:
             print('GOAL! You let fly and rocket the ball into the roof of the net!')
             counters.goal_score()
-            gif_generation(top_middle_goal_gif, 300, 8, top_middle_goal_sound) # gif, speed, frame, sound effect ####################################################################################
+            gif_generation(top_middle_goal_1_gif, 300, 8, top_middle_goal_1_end_frame)  #### black box slightly misaligned
             main_screen()
     elif player_choice == areas[4]:  # Goalie diving bottom right
         if goalie_choice == areas[4]:
@@ -270,6 +285,7 @@ def complete_miss(player_choice):
     elif player_choice == areas[3]:
         print('MISS! Your shot is blazed over the crossbar!')  # missing over the crossbar - top middle
         counters.complete_miss()
+        gif_generation(top_middle_miss_1_gif, 300, 8, top_middle_miss_1_end_frame)
         main_screen()
     elif player_choice == areas[4]:
         print('MISS! Your shot trickles passed the post!')  # missing the right post low - bottom right
@@ -302,9 +318,10 @@ def crossbar_hit(player_choice):
         counters.crossbar_hit()
         gif_generation(top_left_crossbar_1_gif, 300, 8, top_left_crossbar_1_end_frame)
         main_screen()
-    elif player_choice == areas[2]:  # hitting the middle of the crossbar
+    elif player_choice == areas[3]:  # hitting the middle of the crossbar
         print('CROSSBAR! The ball is smashed down the middle and canons off the crossbar!')
         counters.crossbar_hit()
+        gif_generation(top_middle_crossbar_1_gif, 300, 8, top_middle_crossbar_1_end_frame)
         main_screen()
     elif player_choice == areas[5]:  # hitting the right part of the crossbar
         print('CROSSBAR! The ball flys high to the right and rattles the top of the crossbar!')
