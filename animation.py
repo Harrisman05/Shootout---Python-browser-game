@@ -25,6 +25,8 @@ setBackgroundImage('gifs/background.jpeg')
 background = pygame.image.load('gifs/background.jpeg') #loading of the background image
 display_width = 800
 display_height = 800
+gif_x_coord_top_left_corner = (display_width/2)-130.5
+gif_y_coord_top_left_corner = (display_width/2)-180
 gameDisplay = pygame.display.set_mode((display_width,display_height))
 gameDisplay.blit(background, (0, 0))
 black = (0, 0, 0)
@@ -233,7 +235,7 @@ def fade(gif_end_frame_sprite, width, height):
     fade.fill((black))
     for alpha in range(0, 50):
         fade.set_alpha(alpha)
-        gameDisplay.blit(fade, (261, 180))
+        gameDisplay.blit(fade, (gif_x_coord_top_left_corner, gif_y_coord_top_left_corner))
         pygame.display.update()
         pygame.time.delay(50)
 
@@ -430,7 +432,7 @@ def post_hit(player_choice):
 def gif_generation(gif, speed, gif_end_frame, gif_end_frame_sprite, sound = 0):
 
 
-    moveSprite(gif, 261, 180)  # pass gif thru the function, true references the centre of the sprite, so it appears at the coordinate at the middle of the sprite, no true means sprite is placed at top left corner
+    moveSprite(gif, gif_x_coord_top_left_corner, gif_y_coord_top_left_corner)  # pass gif thru the function, true references the centre of the sprite, so it appears at the coordinate at the middle of the sprite, no true means sprite is placed at top left corner
     showSprite(gif)
     nextFrame = clock()
     frame = 0 #current frame of animation
@@ -453,7 +455,7 @@ def gif_generation(gif, speed, gif_end_frame, gif_end_frame_sprite, sound = 0):
                 else:
                     sound.play()
             if frame == gif_end_frame:
-                fade(gif_end_frame_sprite, 261, 180)
+                fade(gif_end_frame_sprite, gif_x_coord_top_left_corner, gif_y_coord_top_left_corner)
                 killSprite(gif)
                 main_screen()  # ending the gif and calling main_screen to go back to the selection screen
         changeSpriteImage(gif, frame)
