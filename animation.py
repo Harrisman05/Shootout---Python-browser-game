@@ -231,6 +231,14 @@ def score_counters():
     transparent_image.set_alpha(40)
     gameDisplay.blit(transparent_image, (0, 0))
 
+    black_box_placeholder = pygame.image.load('black_box_placeholder.png').convert()
+    black_box_placeholder.set_alpha(120)
+    gameDisplay.blit(black_box_placeholder, (0, 200))
+
+    red_x = pygame.image.load('red_x.png').convert()
+    red_x.set_alpha(120)
+    gameDisplay.blit(red_x, (10, 400))
+
 def fade(gif_end_frame_sprite, width, height):
 
     pygame.time.delay(700)
