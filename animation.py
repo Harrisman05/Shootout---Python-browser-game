@@ -227,6 +227,10 @@ def score_counters():
     gameDisplay.blit(post_count_render, (600, 320))
     gameDisplay.blit(crossbar_count_render, (600, 360))
 
+    transparent_image = pygame.image.load('shootout_indicator.png').convert()
+    transparent_image.set_alpha(40)
+    gameDisplay.blit(transparent_image, (0, 0))
+
 def fade(gif_end_frame_sprite, width, height):
 
     pygame.time.delay(700)
