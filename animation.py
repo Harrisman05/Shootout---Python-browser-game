@@ -227,17 +227,34 @@ def score_counters():
     gameDisplay.blit(post_count_render, (600, 320))
     gameDisplay.blit(crossbar_count_render, (600, 360))
 
-    transparent_image = pygame.image.load('shootout_indicator.png').convert()
-    transparent_image.set_alpha(40)
-    gameDisplay.blit(transparent_image, (0, 0))
+def penalty_tracker_box():
 
-    black_box_placeholder = pygame.image.load('black_box_placeholder.png').convert()
+    penalty_tracker_box_x_coord = 291
+    penalty_tracker_box_y_coord = 686
+
+    penalty_tracker_box = pygame.image.load('images/new_shootout_indicator_cleaned.png').convert()
+    #penalty_tracker_box.set_alpha(200)
+    gameDisplay.blit(penalty_tracker_box, (penalty_tracker_box_x_coord, penalty_tracker_box_y_coord))
+
+    black_box_placeholder = pygame.image.load('images/black_box_placeholder.png').convert()
     black_box_placeholder.set_alpha(120)
     gameDisplay.blit(black_box_placeholder, (0, 200))
 
-    red_x = pygame.image.load('red_x.png').convert()
-    red_x.set_alpha(120)
-    gameDisplay.blit(red_x, (10, 400))
+    red_x = pygame.image.load('images/red_x.png').convert()
+    green_ball = pygame.image.load('images/green_ball.png').convert()
+
+    gameDisplay.blit(green_ball, (penalty_tracker_box_x_coord + 6, penalty_tracker_box_y_coord + 25))
+    #gameDisplay.blit(green_ball, (penalty_tracker_box_x_coord + 55, penalty_tracker_box_y_coord + 25))
+    gameDisplay.blit(green_ball, (penalty_tracker_box_x_coord + 104, penalty_tracker_box_y_coord + 25))
+    #gameDisplay.blit(green_ball, (penalty_tracker_box_x_coord + 153, penalty_tracker_box_y_coord + 25))
+    #gameDisplay.blit(green_ball, (penalty_tracker_box_x_coord + 202, penalty_tracker_box_y_coord + 25))
+
+    gameDisplay.blit(red_x, (penalty_tracker_box_x_coord + 6, penalty_tracker_box_y_coord + 25))
+    #gameDisplay.blit(red_x, (penalty_tracker_box_x_coord + 55, penalty_tracker_box_y_coord + 25))
+    # gameDisplay.blit(red_x, (penalty_tracker_box_x_coord + 104, penalty_tracker_box_y_coord + 25))
+    #gameDisplay.blit(red_x, (penalty_tracker_box_x_coord + 153, penalty_tracker_box_y_coord + 25))
+    gameDisplay.blit(red_x, (penalty_tracker_box_x_coord + 202, penalty_tracker_box_y_coord + 25))
+
 
 def fade(gif_end_frame_sprite, width, height):
 
@@ -584,6 +601,7 @@ def main_screen():
             changeSpriteImage(Shot_selection_gif, frame)
 
             score_counters()
+            penalty_tracker_box()
 
 
 ########################################################################################################################
