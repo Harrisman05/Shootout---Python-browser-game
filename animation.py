@@ -36,6 +36,9 @@ nextFrame = clock() #time at which next frame will appear`
 frame = 0 #current frame of animation, set to zero as that is the index of the first frame
 tick(60)
 
+red_x = pygame.image.load('images/red_x.png').convert()
+green_ball = pygame.image.load('images/green_ball.png').convert()
+
 ##############################################################################################################################################################################
 
 # bottom left sprite sheets + end frames
@@ -160,6 +163,7 @@ font = pygame.font.Font('freesansbold.ttf', 15) # pygame font, parameter are fon
 ########################################################################################################################
 
 player_choice = ''
+penalty_table_tracker = ['','','','','']
 
 #             0              1             2                3             4             5         6        7           8
 areas = ('bottom left', 'top left', 'bottom middle', 'top middle', 'bottom right', 'top right', 'post', 'crossbar', 'miss')
@@ -231,30 +235,40 @@ def penalty_tracker_box():
 
     penalty_tracker_box_x_coord = 291
     penalty_tracker_box_y_coord = 686
+    icon_x_coord_offset = [6, 55, 104, 153, 202]
 
     penalty_tracker_box = pygame.image.load('images/new_shootout_indicator_cleaned.png').convert()
-    #penalty_tracker_box.set_alpha(200)
+    penalty_tracker_box.set_alpha(200)
     gameDisplay.blit(penalty_tracker_box, (penalty_tracker_box_x_coord, penalty_tracker_box_y_coord))
 
-    black_box_placeholder = pygame.image.load('images/black_box_placeholder.png').convert()
-    black_box_placeholder.set_alpha(120)
-    gameDisplay.blit(black_box_placeholder, (0, 200))
+    if counters.game_count == 1:
+        gameDisplay.blit(penalty_table_tracker[0], (penalty_tracker_box_x_coord + icon_x_coord_offset[0], penalty_tracker_box_y_coord + 25))
+    elif counters.game_count == 2:
+        gameDisplay.blit(penalty_table_tracker[0],(penalty_tracker_box_x_coord + icon_x_coord_offset[0], penalty_tracker_box_y_coord + 25))
+        gameDisplay.blit(penalty_table_tracker[1],(penalty_tracker_box_x_coord + icon_x_coord_offset[1], penalty_tracker_box_y_coord + 25))
+    elif counters.game_count == 3:
+        gameDisplay.blit(penalty_table_tracker[0],(penalty_tracker_box_x_coord + icon_x_coord_offset[0], penalty_tracker_box_y_coord + 25))
+        gameDisplay.blit(penalty_table_tracker[1],(penalty_tracker_box_x_coord + icon_x_coord_offset[1], penalty_tracker_box_y_coord + 25))
+        gameDisplay.blit(penalty_table_tracker[2],(penalty_tracker_box_x_coord + icon_x_coord_offset[2], penalty_tracker_box_y_coord + 25))
+    elif counters.game_count == 4:
+        gameDisplay.blit(penalty_table_tracker[0],(penalty_tracker_box_x_coord + icon_x_coord_offset[0], penalty_tracker_box_y_coord + 25))
+        gameDisplay.blit(penalty_table_tracker[1],(penalty_tracker_box_x_coord + icon_x_coord_offset[1], penalty_tracker_box_y_coord + 25))
+        gameDisplay.blit(penalty_table_tracker[2],(penalty_tracker_box_x_coord + icon_x_coord_offset[2], penalty_tracker_box_y_coord + 25))
+        gameDisplay.blit(penalty_table_tracker[3],(penalty_tracker_box_x_coord + icon_x_coord_offset[3], penalty_tracker_box_y_coord + 25))
+    elif counters.game_count == 5:
+        gameDisplay.blit(penalty_table_tracker[0],(penalty_tracker_box_x_coord + icon_x_coord_offset[0], penalty_tracker_box_y_coord + 25))
+        gameDisplay.blit(penalty_table_tracker[1],(penalty_tracker_box_x_coord + icon_x_coord_offset[1], penalty_tracker_box_y_coord + 25))
+        gameDisplay.blit(penalty_table_tracker[2],(penalty_tracker_box_x_coord + icon_x_coord_offset[2], penalty_tracker_box_y_coord + 25))
+        gameDisplay.blit(penalty_table_tracker[3],(penalty_tracker_box_x_coord + icon_x_coord_offset[3], penalty_tracker_box_y_coord + 25))
+        gameDisplay.blit(penalty_table_tracker[4],(penalty_tracker_box_x_coord + icon_x_coord_offset[4], penalty_tracker_box_y_coord + 25))
 
-    red_x = pygame.image.load('images/red_x.png').convert()
-    green_ball = pygame.image.load('images/green_ball.png').convert()
+    #print(penalty_table_tracker)
+def penalty_tracker_box_updater(outcome):
 
-    gameDisplay.blit(green_ball, (penalty_tracker_box_x_coord + 6, penalty_tracker_box_y_coord + 25))
-    #gameDisplay.blit(green_ball, (penalty_tracker_box_x_coord + 55, penalty_tracker_box_y_coord + 25))
-    gameDisplay.blit(green_ball, (penalty_tracker_box_x_coord + 104, penalty_tracker_box_y_coord + 25))
-    #gameDisplay.blit(green_ball, (penalty_tracker_box_x_coord + 153, penalty_tracker_box_y_coord + 25))
-    #gameDisplay.blit(green_ball, (penalty_tracker_box_x_coord + 202, penalty_tracker_box_y_coord + 25))
-
-    gameDisplay.blit(red_x, (penalty_tracker_box_x_coord + 6, penalty_tracker_box_y_coord + 25))
-    #gameDisplay.blit(red_x, (penalty_tracker_box_x_coord + 55, penalty_tracker_box_y_coord + 25))
-    # gameDisplay.blit(red_x, (penalty_tracker_box_x_coord + 104, penalty_tracker_box_y_coord + 25))
-    #gameDisplay.blit(red_x, (penalty_tracker_box_x_coord + 153, penalty_tracker_box_y_coord + 25))
-    gameDisplay.blit(red_x, (penalty_tracker_box_x_coord + 202, penalty_tracker_box_y_coord + 25))
-
+    if outcome == 'goal':
+        penalty_table_tracker[counters.game_count - 1] = green_ball
+    elif outcome == 'no_goal':
+        penalty_table_tracker[counters.game_count - 1] = red_x
 
 def fade(gif_end_frame_sprite, width, height):
 
@@ -289,66 +303,67 @@ def game_logic(player_choice):
         if goalie_choice == areas[0]:
             print('SAVE! The keeper dives low to the left and saves!')
             counters.save_made()
-            gif_generation(bottom_left_save_1_gif, 300, 8, bottom_left_save_1_end_frame)
+            gif_generation(bottom_left_save_1_gif, 300, 8, bottom_left_save_1_end_frame, 'no_goal')
             main_screen()
         else:
             print('GOAL! You rifle the ball in the left corner and it nestles in the net. Goal!')
             counters.goal_score() # if goal is scored, pass all bottom left goal outcomes thru random number generator function and output on of the goal outcomes
-            gif_generation(bottom_left_goal_1_gif, 300, 8, bottom_left_goal_1_end_frame)
+            gif_generation(bottom_left_goal_1_gif, 300, 8, bottom_left_goal_1_end_frame, 'goal')
             main_screen()
     elif player_choice == areas[1]:  # Goalie diving top left
         if goalie_choice == areas[1]:
             print('SAVE! The keeper leaps to the left corner and punches the ball clear!')
             counters.save_made()
-            gif_generation(top_left_save_1_gif, 300, 8, top_left_save_1_end_frame)
+            gif_generation(top_left_save_1_gif, 300, 8, top_left_save_1_end_frame, 'no_goal')
             main_screen()
         else:
             print('GOAL! You smash the ball into the top left corner!')
             counters.goal_score()
-            gif_generation(top_left_goal_1_gif, 300, 8, top_left_goal_1_end_frame)
+            gif_generation(top_left_goal_1_gif, 300, 8, top_left_goal_1_end_frame, 'goal')
             main_screen()
     elif player_choice == areas[2]:  # Goalie staying bottom middle
         if goalie_choice == areas[2]:
             print('SAVE! The keeper reads you and blocks the shot coming directly at him!')
             counters.save_made()
-            gif_generation(bottom_middle_save_1_gif, 300, 8, bottom_middle_save_1_end_frame)
+            gif_generation(bottom_middle_save_1_gif, 300, 8, bottom_middle_save_1_end_frame, 'no_goal')
             main_screen()
         else:
             print('GOAL! You double bluff the keeper and dink the ball down the middle!')
             counters.goal_score()
-            gif_generation(bottom_middle_goal_1_gif, 300, 8, bottom_middle_goal_1_end_frame)
+            gif_generation(bottom_middle_goal_1_gif, 300, 8, bottom_middle_goal_1_end_frame, 'goal')
             main_screen()
     elif player_choice == areas[3]:  # Goalie staying top middle
         if goalie_choice == areas[3]:
             print('SAVE! The keeper reads you palms the ball over the top of the crossbar!')
             counters.save_made()
+            gif_generation(bottom_middle_save_1_gif, 300, 8, bottom_middle_save_1_end_frame, 'no_goal')  ####native gif doesn't exist
             main_screen()
         else:
             print('GOAL! You let fly and rocket the ball into the roof of the net!')
             counters.goal_score()
-            gif_generation(top_middle_goal_1_gif, 300, 8, top_middle_goal_1_end_frame)  #### black box slightly misaligned
+            gif_generation(top_middle_goal_1_gif, 300, 8, top_middle_goal_1_end_frame, 'goal')  #### black box slightly misaligned
             main_screen()
     elif player_choice == areas[4]:  # Goalie diving bottom right
         if goalie_choice == areas[4]:
             print('SAVE! The keeper pounces to the right and deflects the ball away!')
             counters.save_made()
-            gif_generation(bottom_right_save_1_gif, 300, 8, bottom_right_save_1_end_frame)
+            gif_generation(bottom_right_save_1_gif, 300, 8, bottom_right_save_1_end_frame, 'no_goal')
             main_screen()
         else:
             print('GOAL! You arrow the ball into the bottom right corner, keeper stood no chance!')
             counters.goal_score()
-            gif_generation(bottom_right_goal_1_gif, 300, 8, bottom_right_goal_1_end_frame)
+            gif_generation(bottom_right_goal_1_gif, 300, 8, bottom_right_goal_1_end_frame, 'goal')
             main_screen()
     elif player_choice == areas[5]:  # Goalie diving top right
         if goalie_choice == areas[5]:
             print('SAVE! The keeper reaches high and manages to redirect the ball over the crossbar!')
             counters.save_made()
-            gif_generation(top_right_save_1_gif, 300, 8, top_right_save_1_end_frame)
+            gif_generation(top_right_save_1_gif, 300, 8, top_right_save_1_end_frame, 'no_goal')
             main_screen()
         else:
             print('GOAL! You crack the ball into the top right corner of the goal!')
             counters.goal_score()
-            gif_generation(top_right_goal_1_gif, 300, 8, top_right_goal_1_end_frame)
+            gif_generation(top_right_goal_1_gif, 300, 8, top_right_goal_1_end_frame, 'goal')
             main_screen()
 
 ########################################################################################################################
@@ -359,31 +374,32 @@ def complete_miss(player_choice):
     if player_choice == areas[0]:  # complete miss
         print('MISS! You drag your shot wide of the post!')  # missing the left post low - bottom low
         counters.complete_miss()
-        gif_generation(bottom_left_miss_1_gif, 300, 8, bottom_left_miss_1_end_frame)
+        gif_generation(bottom_left_miss_1_gif, 300, 8, bottom_left_miss_1_end_frame, 'no_goal')
         main_screen()
     elif player_choice == areas[1]:
         print('MISS! You sky your shot wayward of the post!')  # missing the left post high - top left
         counters.complete_miss()
+        gif_generation(bottom_left_post_1_gif, 300, 8, bottom_left_post_1_end_frame, 'no_goal')                          ### no gif
         main_screen()
     elif player_choice == areas[2]:
         print('SAVE! Your shot is easily gathered by the goalie!')  # 'missing' bottom low paradox - keeper gathers the shot - bottom low
         counters.save_made()
-        gif_generation(bottom_middle_miss_3_gif, 300, 8, bottom_middle_miss_3_end_frame)
+        gif_generation(bottom_middle_miss_3_gif, 300, 8, bottom_middle_miss_3_end_frame, 'no_goal')
         main_screen()
     elif player_choice == areas[3]:
         print('MISS! Your shot is blazed over the crossbar!')  # missing over the crossbar - top middle
         counters.complete_miss()
-        gif_generation(top_middle_miss_1_gif, 300, 8, top_middle_miss_1_end_frame)
+        gif_generation(top_middle_miss_1_gif, 300, 8, top_middle_miss_1_end_frame, 'no_goal')
         main_screen()
     elif player_choice == areas[4]:
         print('MISS! Your shot trickles passed the post!')  # missing the right post low - bottom right
         counters.complete_miss()
-        gif_generation(bottom_right_miss_1_gif, 300, 8, bottom_right_miss_1_end_frame)
+        gif_generation(bottom_right_miss_1_gif, 300, 8, bottom_right_miss_1_end_frame, 'no_goal')
         main_screen()
     elif player_choice == areas[5]:
         print('MISS! Your shot flys high passed the post!')  # missing the right post high - top right
         counters.complete_miss()
-        gif_generation(top_right_miss_1_gif, 300, 8, top_right_miss_1_end_frame)
+        gif_generation(top_right_miss_1_gif, 300, 8, top_right_miss_1_end_frame, 'no_goal')
         main_screen()
 
 ########################################################################################################################
@@ -393,32 +409,32 @@ def crossbar_hit(player_choice):
     if player_choice == areas[0]:
         print('SAVE! The keeper manages to drop low and tip the ball around the left post!')  # bottom left and post paradox
         counters.save_made()
-        gif_generation(bottom_left_saveparadox_1_gif, 300, 8, bottom_left_saveparadox_1_end_frame)
+        gif_generation(bottom_left_saveparadox_1_gif, 300, 8, bottom_left_saveparadox_1_end_frame, 'no_goal')
         main_screen()
     elif player_choice == areas[2]:  # bottom middle and crossbar paradox
         print('SAVE! The keeper stays rooted to the spot and denys the ball an introduction to the net!')
         counters.save_made()
-        gif_generation(bottom_middle_crossbarparadox_2_gif, 300, 8, bottom_middle_crossbarparadox_2_end_frame)
+        gif_generation(bottom_middle_crossbarparadox_2_gif, 300, 8, bottom_middle_crossbarparadox_2_end_frame, 'no_goal')
         main_screen()
     elif player_choice == areas[4]:  # bottom right and crossbar paradox
         print('SAVE! The keeper gets a fingertip on the ball and nudges it around the post!')
         counters.save_made()
-        gif_generation(bottom_right_crossbarparadox_2_gif, 300, 8, bottom_right_crossbarparadox_2_end_frame)
+        gif_generation(bottom_right_crossbarparadox_2_gif, 300, 8, bottom_right_crossbarparadox_2_end_frame, 'no_goal')
         main_screen()
     elif player_choice == areas[1]:  # hitting the left part of the crossbar
         print('CROSSBAR! The ball flys high and to the left but clips the crossbar and soars into the fans!')
         counters.crossbar_hit()
-        gif_generation(top_left_crossbar_1_gif, 300, 8, top_left_crossbar_1_end_frame)
+        gif_generation(top_left_crossbar_1_gif, 300, 8, top_left_crossbar_1_end_frame, 'no_goal')
         main_screen()
     elif player_choice == areas[3]:  # hitting the middle of the crossbar
         print('CROSSBAR! The ball is smashed down the middle and canons off the crossbar!')
         counters.crossbar_hit()
-        gif_generation(top_middle_crossbar_1_gif, 300, 8, top_middle_crossbar_1_end_frame)
+        gif_generation(top_middle_crossbar_1_gif, 300, 8, top_middle_crossbar_1_end_frame, 'no_goal')
         main_screen()
     elif player_choice == areas[5]:  # hitting the right part of the crossbar
         print('CROSSBAR! The ball flys high to the right and rattles the top of the crossbar!')
         counters.crossbar_hit()
-        gif_generation(top_right_crossbar_1_gif, 300, 8, top_right_crossbar_1_end_frame)
+        gif_generation(top_right_crossbar_1_gif, 300, 8, top_right_crossbar_1_end_frame, 'no_goal')
         main_screen()
 
 ########################################################################################################################
@@ -428,29 +444,32 @@ def post_hit(player_choice):
     if player_choice == areas[2]:  # bottom middle and post paradox
         print('SAVE! The keeper began to dive but managed a save with his trailing leg!')
         counters.save_made()
-        gif_generation(bottom_middle_postparadox_4_gif, 300, 8, bottom_middle_postparadox_4_end_frame)
+        gif_generation(bottom_middle_postparadox_4_gif, 300, 8, bottom_middle_postparadox_4_end_frame, 'no_goal')
         main_screen()
     elif player_choice == areas[3]:  # top middle and post paradox
         print('SAVE! The keeper managed to claw the ball away with a finger-tip save!')
-        counters.save_made()
+        counters.save_made()                                                                                            ###no gif
+        gif_generation(bottom_left_post_1_gif, 300, 8, bottom_left_post_1_end_frame, 'no_goal')
         main_screen()
     elif player_choice == areas[0]:  # hitting the bottom left post
         print('POST! The shot rifles towards the left but thunders off the post!')
         counters.post_hit()
-        gif_generation(bottom_left_post_1_gif, 300, 8, bottom_left_post_1_end_frame)
+        gif_generation(bottom_left_post_1_gif, 300, 8, bottom_left_post_1_end_frame, 'no_goal')
         main_screen()
     elif player_choice == areas[1]:  # hitting the top left post
         print('POST! The shot looks destined for the top left corner but canons off the post!')
-        counters.post_hit()
+        counters.post_hit()                                                                                             ###no gif
+        gif_generation(bottom_left_post_1_gif, 300, 8, bottom_left_post_1_end_frame, 'no_goal')
         main_screen()
     elif player_choice == areas[4]:  # hitting the bottom right post
         print('POST! The daisy cutter of a shot looks promising but rockets off the bottom of the post!')
         counters.post_hit()
-        gif_generation(bottom_right_post_1_gif, 300, 8, bottom_right_post_1_end_frame)
+        gif_generation(bottom_right_post_1_gif, 300, 8, bottom_right_post_1_end_frame, 'no_goal')
         main_screen()
     elif player_choice == areas[5]:  # hitting the top right post
         print('POST! The keeper is motionless as he watches the ball ricochet off the post!')
-        counters.post_hit()
+        counters.post_hit()                                                                                             ###no gif
+        gif_generation(bottom_left_post_1_gif, 300, 8, bottom_left_post_1_end_frame, 'no_goal')
         main_screen()
 
 ########################################################################################################################
@@ -458,7 +477,7 @@ def post_hit(player_choice):
 ########################################################################################################################
 ########################################################################################################################
 
-def gif_generation(gif, speed, gif_end_frame, gif_end_frame_sprite, sound = 0):
+def gif_generation(gif, speed, gif_end_frame, gif_end_frame_sprite, goal = 0, sound = 0):
 
 
     moveSprite(gif, gif_x_coord_top_left_corner, gif_y_coord_top_left_corner)  # pass gif thru the function, true references the centre of the sprite, so it appears at the coordinate at the middle of the sprite, no true means sprite is placed at top left corner
@@ -486,6 +505,7 @@ def gif_generation(gif, speed, gif_end_frame, gif_end_frame_sprite, sound = 0):
             if frame == gif_end_frame:
                 fade(gif_end_frame_sprite, gif_x_coord_top_left_corner, gif_y_coord_top_left_corner)
                 killSprite(gif)
+                penalty_tracker_box_updater(goal)
                 main_screen()  # ending the gif and calling main_screen to go back to the selection screen
         changeSpriteImage(gif, frame)
 
@@ -497,7 +517,7 @@ def main_screen():
     #background_music = mixer.music.load('champions_league_anthem.mp3')
     #mixer.music.play(-1) #runs music in a loop
     click = False
-    while counters.game_count < 60:
+    while counters.game_count < 10:
 
         moveSprite(Shot_selection_gif, 400, 360, True)
         showSprite(Shot_selection_gif)
