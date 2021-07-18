@@ -210,65 +210,137 @@ class button():
         return False
 
 class Counter():
-    game_count = 0
-    goal_count = 0
-    save_count = 0
-    post_count = 0
-    crossbar_count = 0
-    miss_count = 0
+
+    head_to_head_game_count = 0
+    single_player_game_count = 0
+
+    def __init__(self, player):
+
+        self.player = player
+        self.goal_count = 0
+        self.save_count = 0
+        self. post_count = 0
+        self.crossbar_count = 0
+        self.miss_count = 0
 
     def goal_score(self):
-        Counter.game_count += 1
-        Counter.goal_count += 1
+        Counter.head_to_head_game_count += 1
+        Counter.single_player_game_count += 1
+        self.goal_count += 1
 
-        return Counter.goal_count
+        return self.goal_count
 
     def save_made(self):
-        Counter.game_count += 1
-        Counter.save_count += 1
+        Counter.head_to_head_game_count += 1
+        Counter.single_player_game_count += 1
+        self.save_count += 1
 
-        return Counter.save_count
+        return self.save_count
 
     def post_hit(self):
-        Counter.game_count += 1
-        Counter.post_count += 1
+        Counter.head_to_head_game_count += 1
+        Counter.single_player_game_count += 1
+        self.post_count += 1
 
-        return Counter.post_count
+        return self.post_count
 
     def crossbar_hit(self):
-        Counter.game_count += 1
-        Counter.crossbar_count += 1
+        Counter.head_to_head_game_count += 1
+        Counter.single_player_game_count += 1
+        self.crossbar_count += 1
 
-        return Counter.crossbar_count
+        return self.crossbar_count
 
     def complete_miss(self):
-        Counter.game_count += 1
-        Counter.miss_count += 1
+        Counter.head_to_head_game_count += 1
+        Counter.single_player_game_count += 1
+        self.miss_count += 1
 
-        return Counter.miss_count
+        return self.miss_count
 
-single_player_counters = Counter()
-head_to_head_player_1_counter = Counter()
-head_to_head_player_2_counter = Counter()
-
-def score_counters(counter_type):
-
-    game_count_render = font.render('SHOT NUMBER - ' + str(counter_type.game_count), True, red) #text object rendering, text, True to to take screen, black font colour
-    goal_count_render = font.render('Goal count - ' + str(counter_type.goal_count), True, black) #text object rendering, text, True to to take screen, black font colour
-    save_count_render = font.render('Save count - ' + str(counter_type.save_count), True, black)
-    miss_count_render = font.render('Complete Miss count - ' + str(counter_type.miss_count), True, black)
-    post_count_render = font.render('Post count - ' + str(counter_type.post_count), True, black)
-    crossbar_count_render = font.render('Crossbar count - ' + str(counter_type.crossbar_count), True, black)
+    def __str__(self):
+        return f'I am the counter of {self.player}'
 
 
-    gameDisplay.blit(background, (0, 0))
-    pygame.draw.rect(gameDisplay, white, pygame.Rect(587, 192, 200, 190))
-    gameDisplay.blit(game_count_render, (600, 50))
-    gameDisplay.blit(goal_count_render, (600, 200))
-    gameDisplay.blit(save_count_render, (600, 240))
-    gameDisplay.blit(miss_count_render, (600, 280))
-    gameDisplay.blit(post_count_render, (600, 320))
-    gameDisplay.blit(crossbar_count_render, (600, 360))
+single_player_counters = Counter('single player mode')
+head_to_head_player_1_counters = Counter('player_1')
+head_to_head_player_2_counters = Counter('player_2')
+
+def score_counters(*args):
+
+    if args[0] == single_player_counters:
+
+        game_count_render = font.render('SHOT NUMBER - ' + str(args[0].head_to_head_game_count), True, red)
+        goal_count_render = font.render('Goal count - ' + str(args[0].goal_count), True, black)
+        save_count_render = font.render('Save count - ' + str(args[0].save_count), True, black)
+        miss_count_render = font.render('Complete Miss count - ' + str(args[0].miss_count), True, black)
+        post_count_render = font.render('Post count - ' + str(args[0].post_count), True, black)
+        crossbar_count_render = font.render('Crossbar count - ' + str(args[0].crossbar_count), True, black)
+
+        gameDisplay.blit(background, (0, 0))
+        pygame.draw.rect(gameDisplay, white, pygame.Rect(587, 192, 200, 190))
+
+        gameDisplay.blit(game_count_render, (600, 50))
+        gameDisplay.blit(goal_count_render, (600, 200))
+        gameDisplay.blit(save_count_render, (600, 240))
+        gameDisplay.blit(miss_count_render, (600, 280))
+        gameDisplay.blit(post_count_render, (600, 320))
+        gameDisplay.blit(crossbar_count_render, (600, 360))
+
+    elif args[0] == head_to_head_player_1_counters and args[1] == head_to_head_player_2_counters:
+
+        player_1and2_game_count_render = font.render('SHOT NUMBER - ' + str(args[0].head_to_head_game_count), True,red)  # text object rendering, text, True to to take screen, black font colour
+
+        player_1_menu_render = font.render('PLAYER 1 COUNTERS', True, violet)
+        player_1_goal_count_render = font.render('Goal count - ' + str(args[0].goal_count), True,black)  # text object rendering, text, True to to take screen, black font colour
+        player_1_save_count_render = font.render('Save count - ' + str(args[0].save_count), True, black)
+        player_1_miss_count_render = font.render('Complete Miss count - ' + str(args[0].miss_count), True, black)
+        player_1_post_count_render = font.render('Post count - ' + str(args[0].post_count), True, black)
+        player_1_crossbar_count_render = font.render('Crossbar count - ' + str(args[0].crossbar_count), True, black)
+
+        player_2_menu_render = font.render('PLAYER 2 COUNTERS', True, violet)
+        player_2_goal_count_render = font.render('Goal count - ' + str(args[1].goal_count), True,black)  # text object rendering, text, True to to take screen, black font colour
+        player_2_save_count_render = font.render('Save count - ' + str(args[1].save_count), True, black)
+        player_2_miss_count_render = font.render('Complete Miss count - ' + str(args[1].miss_count), True, black)
+        player_2_post_count_render = font.render('Post count - ' + str(args[1].post_count), True, black)
+        player_2_crossbar_count_render = font.render('Crossbar count - ' + str(args[1].crossbar_count), True, black)
+
+        gameDisplay.blit(background, (0, 0))
+        pygame.draw.rect(gameDisplay, white, pygame.Rect(587, 192, 200, 190))
+        pygame.draw.rect(gameDisplay, white, pygame.Rect(15, 192, 200, 190))
+
+        gameDisplay.blit(player_1and2_game_count_render, (600, 50))
+
+        gameDisplay.blit(player_1_menu_render, (600, 160))
+        gameDisplay.blit(player_1_goal_count_render, (600, 200))
+        gameDisplay.blit(player_1_save_count_render, (600, 240))
+        gameDisplay.blit(player_1_miss_count_render, (600, 280))
+        gameDisplay.blit(player_1_post_count_render, (600, 320))
+        gameDisplay.blit(player_1_crossbar_count_render, (600, 360))
+
+        gameDisplay.blit(player_2_menu_render, (20, 160))
+        gameDisplay.blit(player_2_goal_count_render, (20, 200))
+        gameDisplay.blit(player_2_save_count_render, (20, 240))
+        gameDisplay.blit(player_2_miss_count_render, (20, 280))
+        gameDisplay.blit(player_2_post_count_render, (20, 320))
+        gameDisplay.blit(player_2_crossbar_count_render, (20, 360))
+
+        # player_2_counter_render = font.render('PLAYER 2 COUNTERS' + str(args[1].game_count), True, violet)
+        # game_count_render = font.render('SHOT NUMBER - ' + str(args[1].game_count), True,red)  # text object rendering, text, True to to take screen, black font colour
+        # goal_count_render = font.render('Goal count - ' + str(args[1].goal_count), True,black)  # text object rendering, text, True to to take screen, black font colour
+        # save_count_render = font.render('Save count - ' + str(args[1].save_count), True, black)
+        # miss_count_render = font.render('Complete Miss count - ' + str(args[1].miss_count), True, black)
+        # post_count_render = font.render('Post count - ' + str(args[1].post_count), True, black)
+        # crossbar_count_render = font.render('Crossbar count - ' + str(args[1].crossbar_count), True, black)
+
+        # pygame.draw.rect(gameDisplay, white, pygame.Rect(587, 192, 200, 190))
+        # gameDisplay.blit(game_count_render, (20, 50))
+        # gameDisplay.blit(goal_count_render, (20, 200))
+        # gameDisplay.blit(save_count_render, (20, 240))
+        # gameDisplay.blit(miss_count_render, (20, 280))
+        # gameDisplay.blit(post_count_render, (20, 320))
+        # gameDisplay.blit(crossbar_count_render, (20, 360))
+
 
 def penalty_tracker_box(counter_type):
 
@@ -280,34 +352,33 @@ def penalty_tracker_box(counter_type):
     penalty_tracker_box.set_alpha(200)
     gameDisplay.blit(penalty_tracker_box, (penalty_tracker_box_x_coord, penalty_tracker_box_y_coord))
 
-    if counter_type.game_count == 1:
+    if counter_type.single_player_game_count == 1:
         gameDisplay.blit(penalty_table_tracker[0], (penalty_tracker_box_x_coord + icon_x_coord_offset[0], penalty_tracker_box_y_coord + 25))
-    elif counter_type.game_count == 2:
+    elif counter_type.single_player_game_count == 2:
         gameDisplay.blit(penalty_table_tracker[0],(penalty_tracker_box_x_coord + icon_x_coord_offset[0], penalty_tracker_box_y_coord + 25))
         gameDisplay.blit(penalty_table_tracker[1],(penalty_tracker_box_x_coord + icon_x_coord_offset[1], penalty_tracker_box_y_coord + 25))
-    elif counter_type.game_count == 3:
+    elif counter_type.single_player_game_count == 3:
         gameDisplay.blit(penalty_table_tracker[0],(penalty_tracker_box_x_coord + icon_x_coord_offset[0], penalty_tracker_box_y_coord + 25))
         gameDisplay.blit(penalty_table_tracker[1],(penalty_tracker_box_x_coord + icon_x_coord_offset[1], penalty_tracker_box_y_coord + 25))
         gameDisplay.blit(penalty_table_tracker[2],(penalty_tracker_box_x_coord + icon_x_coord_offset[2], penalty_tracker_box_y_coord + 25))
-    elif counter_type.game_count == 4:
+    elif counter_type.single_player_game_count == 4:
         gameDisplay.blit(penalty_table_tracker[0],(penalty_tracker_box_x_coord + icon_x_coord_offset[0], penalty_tracker_box_y_coord + 25))
         gameDisplay.blit(penalty_table_tracker[1],(penalty_tracker_box_x_coord + icon_x_coord_offset[1], penalty_tracker_box_y_coord + 25))
         gameDisplay.blit(penalty_table_tracker[2],(penalty_tracker_box_x_coord + icon_x_coord_offset[2], penalty_tracker_box_y_coord + 25))
         gameDisplay.blit(penalty_table_tracker[3],(penalty_tracker_box_x_coord + icon_x_coord_offset[3], penalty_tracker_box_y_coord + 25))
-    elif counter_type.game_count == 5:
+    elif counter_type.single_player_game_count == 5:
         gameDisplay.blit(penalty_table_tracker[0],(penalty_tracker_box_x_coord + icon_x_coord_offset[0], penalty_tracker_box_y_coord + 25))
         gameDisplay.blit(penalty_table_tracker[1],(penalty_tracker_box_x_coord + icon_x_coord_offset[1], penalty_tracker_box_y_coord + 25))
         gameDisplay.blit(penalty_table_tracker[2],(penalty_tracker_box_x_coord + icon_x_coord_offset[2], penalty_tracker_box_y_coord + 25))
         gameDisplay.blit(penalty_table_tracker[3],(penalty_tracker_box_x_coord + icon_x_coord_offset[3], penalty_tracker_box_y_coord + 25))
         gameDisplay.blit(penalty_table_tracker[4],(penalty_tracker_box_x_coord + icon_x_coord_offset[4], penalty_tracker_box_y_coord + 25))
 
-    #print(penalty_table_tracker)
 def penalty_tracker_box_updater(outcome, counter_type):
 
     if outcome == 'goal':
-        penalty_table_tracker[counter_type.game_count - 1] = green_ball
+        penalty_table_tracker[counter_type.single_player_game_count - 1] = green_ball
     elif outcome == 'no_goal':
-        penalty_table_tracker[counter_type.game_count - 1] = red_x
+        penalty_table_tracker[counter_type.single_player_game_count - 1] = red_x
 
 def fade(gif_end_frame_sprite, width, height):
 
@@ -329,7 +400,7 @@ def game_type_assessor(single_player_choice = None, head_to_head_player_1_choice
     elif single_player_choice == None and head_to_head_player_2_choice == None: # playing head to head, player 1 choice
         return head_to_head_player_1_choice
     elif single_player_choice == None and head_to_head_player_1_choice == None: # playing head to head, player 2 choice
-        pass
+        return head_to_head_player_2_choice
 
 ########################################################################################################################
 ########################################################################################################################
@@ -536,7 +607,7 @@ def gif_generation(gif, speed, gif_end_frame, gif_end_frame_sprite, counter_type
                 penalty_tracker_box_updater(goal, counter_type)
                 if counter_type == single_player_counters:
                     single_player_loop()
-                elif counter_type == head_to_head_player_1_counter or head_to_head_player_2_counter:
+                elif counter_type == head_to_head_player_1_counters or head_to_head_player_2_counters:
                     head_to_head_loop()# ending the gif and calling main_screen to go back to the selection screen
         changeSpriteImage(gif, frame)
 
@@ -547,7 +618,7 @@ def single_player_loop():
 
     #background_music = mixer.music.load('champions_league_anthem.mp3')
     #mixer.music.play(-1) #runs music in a loop
-    while single_player_counters.game_count < 10:
+    while single_player_counters.single_player_game_count < 10:
 
         moveSprite(Shot_selection_gif, 400, 360, True)
         showSprite(Shot_selection_gif)
@@ -660,7 +731,17 @@ def single_player_loop():
 def head_to_head_loop():
     # background_music = mixer.music.load('champions_league_anthem.mp3')
     # mixer.music.play(-1) #runs music in a loop
-    while single_player_counters.game_count < 10:
+
+    if head_to_head_player_1_counters.head_to_head_game_count % 2 == 0: #if game count is odd
+        selected_player_counter = head_to_head_player_1_counters
+        selected_player_choice = head_to_head_player_1_choice
+        player_1_turn = True
+    else:
+        selected_player_counter = head_to_head_player_2_counters
+        selected_player_choice = head_to_head_player_2_choice
+        player_1_turn = False
+
+    while head_to_head_player_1_counters.head_to_head_game_count < 10:
 
         moveSprite(Shot_selection_gif, 400, 360, True)
         showSprite(Shot_selection_gif)
@@ -689,54 +770,73 @@ def head_to_head_loop():
 
                 mouse = pygame.mouse.get_pos()  # mouse needs to be in the for event, otherwise it doesn't live update
                 print(mouse)
+                print(player_1_turn)
+                print(selected_player_counter)
 
                 if 355 + 10 > mouse[0] > 355 and 301 + 10 > mouse[1] > 301:  # bottom left
                     if event.type == MOUSEBUTTONDOWN:
                         if click:
                             mixer.music.stop()
-                            single_player_choice = areas[0]
-                            game_logic(single_player_counters, single_player_choice)
+                            selected_player_choice = areas[0]
+                            if player_1_turn == True:
+                                game_logic(selected_player_counter, None, selected_player_choice)
+                            elif player_1_turn == False:
+                                game_logic(selected_player_counter, None, None, selected_player_choice)
 
-
-                elif 349 + 10 > mouse[0] > 349 and 275 + 10 > mouse[
-                    1] > 275:  # top left setting up code to determine whether the mouse position is within the shooting box, #top left
+                elif 349 + 10 > mouse[0] > 349 and 275 + 10 > mouse[1] > 275:  # top left setting up code to determine whether the mouse position is within the shooting box, #top left
                     if event.type == MOUSEBUTTONDOWN:
                         if click:
                             mixer.music.stop()
-                            single_player_choice = areas[1]
-                            game_logic(single_player_counters, single_player_choice)
+                            selected_player_choice = areas[1]
+                            if player_1_turn == True:
+                                game_logic(selected_player_counter, None, selected_player_choice)
+                            elif player_1_turn == False:
+                                game_logic(selected_player_counter, None, None, selected_player_choice)
+
 
 
                 elif 395 + 10 > mouse[0] > 395 and 300 + 10 > mouse[1] > 300:  # bottom middle
                     if event.type == MOUSEBUTTONDOWN:
                         if click:
                             mixer.music.stop()
-                            single_player_choice = areas[2]
-                            game_logic(single_player_counters, single_player_choice)
+                            selected_player_choice = areas[2]
+                            if player_1_turn == True:
+                                game_logic(selected_player_counter, None, selected_player_choice)
+                            elif player_1_turn == False:
+                                game_logic(selected_player_counter, None, None, selected_player_choice)
 
 
                 elif 396 + 10 > mouse[0] > 396 and 279 + 10 > mouse[1] > 279:  # top middle
                     if event.type == MOUSEBUTTONDOWN:
                         if click:
                             mixer.music.stop()
-                            single_player_choice = areas[3]
-                            game_logic(single_player_counters, single_player_choice)
+                            selected_player_choice = areas[3]
+                            if player_1_turn == True:
+                                game_logic(selected_player_counter, None, selected_player_choice)
+                            elif player_1_turn == False:
+                                game_logic(selected_player_counter, None, None, selected_player_choice)
 
 
                 elif 442 + 10 > mouse[0] > 442 and 302 + 10 > mouse[1] > 302:  # bottom right
                     if event.type == MOUSEBUTTONDOWN:
                         if click:
                             mixer.music.stop()
-                            single_player_choice = areas[4]
-                            game_logic(single_player_counters, single_player_choice)
+                            selected_player_choice = areas[4]
+                            if player_1_turn == True:
+                                game_logic(selected_player_counter, None, selected_player_choice)
+                            elif player_1_turn == False:
+                                game_logic(selected_player_counter, None, None, selected_player_choice)
 
 
                 elif 442 + 10 > mouse[0] > 442 and 282 + 10 > mouse[1] > 282:  # top right
                     if event.type == MOUSEBUTTONDOWN:
                         if click:
                             mixer.music.stop()
-                            single_player_choice = areas[5]
-                            game_logic(single_player_counters, single_player_choice)
+                            selected_player_choice = areas[5]
+                            if player_1_turn == True:
+                                game_logic(selected_player_counter, None, selected_player_choice)
+                            elif player_1_turn == False:
+                                game_logic(selected_player_counter, None, None, selected_player_choice)
 
             if 355 + 10 > mouse[0] > 355 and 301 + 10 > mouse[1] > 301:  # bottom left
                 drawRect(355, 301, 10, 10, red, 0)
@@ -763,7 +863,7 @@ def head_to_head_loop():
                     frame = 0  # resetting the gif once it reaches the end
             changeSpriteImage(Shot_selection_gif, frame)
 
-            score_counters(single_player_counters)
+            score_counters(head_to_head_player_1_counters, head_to_head_player_2_counters)
             penalty_tracker_box(single_player_counters)
 
             game_type_label = header_font.render('Head to Head', True, blue)
