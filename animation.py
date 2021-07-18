@@ -30,8 +30,11 @@ gif_y_coord_top_left_corner = (display_width/2)-180
 gameDisplay = pygame.display.set_mode((display_width,display_height))
 gameDisplay.blit(background, (0, 0))
 black = (0, 0, 0)
+green = (0, 255, 0)
 red = (255, 0, 0)
 white = (255, 255, 255)
+blue = 	(0,0,255)
+violet = (127, 0, 255)
 nextFrame = clock() #time at which next frame will appear`
 frame = 0 #current frame of animation, set to zero as that is the index of the first frame
 tick(60)
@@ -304,67 +307,67 @@ def game_logic(player_choice):
             print('SAVE! The keeper dives low to the left and saves!')
             counters.save_made()
             gif_generation(bottom_left_save_1_gif, 300, 8, bottom_left_save_1_end_frame, 'no_goal')
-            main_screen()
+            single_player_loop()
         else:
             print('GOAL! You rifle the ball in the left corner and it nestles in the net. Goal!')
             counters.goal_score() # if goal is scored, pass all bottom left goal outcomes thru random number generator function and output on of the goal outcomes
             gif_generation(bottom_left_goal_1_gif, 300, 8, bottom_left_goal_1_end_frame, 'goal')
-            main_screen()
+            single_player_loop()
     elif player_choice == areas[1]:  # Goalie diving top left
         if goalie_choice == areas[1]:
             print('SAVE! The keeper leaps to the left corner and punches the ball clear!')
             counters.save_made()
             gif_generation(top_left_save_1_gif, 300, 8, top_left_save_1_end_frame, 'no_goal')
-            main_screen()
+            single_player_loop()
         else:
             print('GOAL! You smash the ball into the top left corner!')
             counters.goal_score()
             gif_generation(top_left_goal_1_gif, 300, 8, top_left_goal_1_end_frame, 'goal')
-            main_screen()
+            single_player_loop()
     elif player_choice == areas[2]:  # Goalie staying bottom middle
         if goalie_choice == areas[2]:
             print('SAVE! The keeper reads you and blocks the shot coming directly at him!')
             counters.save_made()
             gif_generation(bottom_middle_save_1_gif, 300, 8, bottom_middle_save_1_end_frame, 'no_goal')
-            main_screen()
+            single_player_loop()
         else:
             print('GOAL! You double bluff the keeper and dink the ball down the middle!')
             counters.goal_score()
             gif_generation(bottom_middle_goal_1_gif, 300, 8, bottom_middle_goal_1_end_frame, 'goal')
-            main_screen()
+            single_player_loop()
     elif player_choice == areas[3]:  # Goalie staying top middle
         if goalie_choice == areas[3]:
             print('SAVE! The keeper reads you palms the ball over the top of the crossbar!')
             counters.save_made()
             gif_generation(bottom_middle_save_1_gif, 300, 8, bottom_middle_save_1_end_frame, 'no_goal')  ####native gif doesn't exist
-            main_screen()
+            single_player_loop()
         else:
             print('GOAL! You let fly and rocket the ball into the roof of the net!')
             counters.goal_score()
             gif_generation(top_middle_goal_1_gif, 300, 8, top_middle_goal_1_end_frame, 'goal')  #### black box slightly misaligned
-            main_screen()
+            single_player_loop()
     elif player_choice == areas[4]:  # Goalie diving bottom right
         if goalie_choice == areas[4]:
             print('SAVE! The keeper pounces to the right and deflects the ball away!')
             counters.save_made()
             gif_generation(bottom_right_save_1_gif, 300, 8, bottom_right_save_1_end_frame, 'no_goal')
-            main_screen()
+            single_player_loop()
         else:
             print('GOAL! You arrow the ball into the bottom right corner, keeper stood no chance!')
             counters.goal_score()
             gif_generation(bottom_right_goal_1_gif, 300, 8, bottom_right_goal_1_end_frame, 'goal')
-            main_screen()
+            single_player_loop()
     elif player_choice == areas[5]:  # Goalie diving top right
         if goalie_choice == areas[5]:
             print('SAVE! The keeper reaches high and manages to redirect the ball over the crossbar!')
             counters.save_made()
             gif_generation(top_right_save_1_gif, 300, 8, top_right_save_1_end_frame, 'no_goal')
-            main_screen()
+            single_player_loop()
         else:
             print('GOAL! You crack the ball into the top right corner of the goal!')
             counters.goal_score()
             gif_generation(top_right_goal_1_gif, 300, 8, top_right_goal_1_end_frame, 'goal')
-            main_screen()
+            single_player_loop()
 
 ########################################################################################################################
 ########################################################################################################################
@@ -375,32 +378,32 @@ def complete_miss(player_choice):
         print('MISS! You drag your shot wide of the post!')  # missing the left post low - bottom low
         counters.complete_miss()
         gif_generation(bottom_left_miss_1_gif, 300, 8, bottom_left_miss_1_end_frame, 'no_goal')
-        main_screen()
+        single_player_loop()
     elif player_choice == areas[1]:
         print('MISS! You sky your shot wayward of the post!')  # missing the left post high - top left
         counters.complete_miss()
         gif_generation(bottom_left_post_1_gif, 300, 8, bottom_left_post_1_end_frame, 'no_goal')                          ### no gif
-        main_screen()
+        single_player_loop()
     elif player_choice == areas[2]:
         print('SAVE! Your shot is easily gathered by the goalie!')  # 'missing' bottom low paradox - keeper gathers the shot - bottom low
         counters.save_made()
         gif_generation(bottom_middle_miss_3_gif, 300, 8, bottom_middle_miss_3_end_frame, 'no_goal')
-        main_screen()
+        single_player_loop()
     elif player_choice == areas[3]:
         print('MISS! Your shot is blazed over the crossbar!')  # missing over the crossbar - top middle
         counters.complete_miss()
         gif_generation(top_middle_miss_1_gif, 300, 8, top_middle_miss_1_end_frame, 'no_goal')
-        main_screen()
+        single_player_loop()
     elif player_choice == areas[4]:
         print('MISS! Your shot trickles passed the post!')  # missing the right post low - bottom right
         counters.complete_miss()
         gif_generation(bottom_right_miss_1_gif, 300, 8, bottom_right_miss_1_end_frame, 'no_goal')
-        main_screen()
+        single_player_loop()
     elif player_choice == areas[5]:
         print('MISS! Your shot flys high passed the post!')  # missing the right post high - top right
         counters.complete_miss()
         gif_generation(top_right_miss_1_gif, 300, 8, top_right_miss_1_end_frame, 'no_goal')
-        main_screen()
+        single_player_loop()
 
 ########################################################################################################################
 
@@ -410,32 +413,32 @@ def crossbar_hit(player_choice):
         print('SAVE! The keeper manages to drop low and tip the ball around the left post!')  # bottom left and post paradox
         counters.save_made()
         gif_generation(bottom_left_saveparadox_1_gif, 300, 8, bottom_left_saveparadox_1_end_frame, 'no_goal')
-        main_screen()
+        single_player_loop()
     elif player_choice == areas[2]:  # bottom middle and crossbar paradox
         print('SAVE! The keeper stays rooted to the spot and denys the ball an introduction to the net!')
         counters.save_made()
         gif_generation(bottom_middle_crossbarparadox_2_gif, 300, 8, bottom_middle_crossbarparadox_2_end_frame, 'no_goal')
-        main_screen()
+        single_player_loop()
     elif player_choice == areas[4]:  # bottom right and crossbar paradox
         print('SAVE! The keeper gets a fingertip on the ball and nudges it around the post!')
         counters.save_made()
         gif_generation(bottom_right_crossbarparadox_2_gif, 300, 8, bottom_right_crossbarparadox_2_end_frame, 'no_goal')
-        main_screen()
+        single_player_loop()
     elif player_choice == areas[1]:  # hitting the left part of the crossbar
         print('CROSSBAR! The ball flys high and to the left but clips the crossbar and soars into the fans!')
         counters.crossbar_hit()
         gif_generation(top_left_crossbar_1_gif, 300, 8, top_left_crossbar_1_end_frame, 'no_goal')
-        main_screen()
+        single_player_loop()
     elif player_choice == areas[3]:  # hitting the middle of the crossbar
         print('CROSSBAR! The ball is smashed down the middle and canons off the crossbar!')
         counters.crossbar_hit()
         gif_generation(top_middle_crossbar_1_gif, 300, 8, top_middle_crossbar_1_end_frame, 'no_goal')
-        main_screen()
+        single_player_loop()
     elif player_choice == areas[5]:  # hitting the right part of the crossbar
         print('CROSSBAR! The ball flys high to the right and rattles the top of the crossbar!')
         counters.crossbar_hit()
         gif_generation(top_right_crossbar_1_gif, 300, 8, top_right_crossbar_1_end_frame, 'no_goal')
-        main_screen()
+        single_player_loop()
 
 ########################################################################################################################
 
@@ -445,40 +448,39 @@ def post_hit(player_choice):
         print('SAVE! The keeper began to dive but managed a save with his trailing leg!')
         counters.save_made()
         gif_generation(bottom_middle_postparadox_4_gif, 300, 8, bottom_middle_postparadox_4_end_frame, 'no_goal')
-        main_screen()
+        single_player_loop()
     elif player_choice == areas[3]:  # top middle and post paradox
         print('SAVE! The keeper managed to claw the ball away with a finger-tip save!')
         counters.save_made()                                                                                            ###no gif
         gif_generation(bottom_left_post_1_gif, 300, 8, bottom_left_post_1_end_frame, 'no_goal')
-        main_screen()
+        single_player_loop()
     elif player_choice == areas[0]:  # hitting the bottom left post
         print('POST! The shot rifles towards the left but thunders off the post!')
         counters.post_hit()
         gif_generation(bottom_left_post_1_gif, 300, 8, bottom_left_post_1_end_frame, 'no_goal')
-        main_screen()
+        single_player_loop()
     elif player_choice == areas[1]:  # hitting the top left post
         print('POST! The shot looks destined for the top left corner but canons off the post!')
         counters.post_hit()                                                                                             ###no gif
         gif_generation(bottom_left_post_1_gif, 300, 8, bottom_left_post_1_end_frame, 'no_goal')
-        main_screen()
+        single_player_loop()
     elif player_choice == areas[4]:  # hitting the bottom right post
         print('POST! The daisy cutter of a shot looks promising but rockets off the bottom of the post!')
         counters.post_hit()
         gif_generation(bottom_right_post_1_gif, 300, 8, bottom_right_post_1_end_frame, 'no_goal')
-        main_screen()
+        single_player_loop()
     elif player_choice == areas[5]:  # hitting the top right post
         print('POST! The keeper is motionless as he watches the ball ricochet off the post!')
         counters.post_hit()                                                                                             ###no gif
         gif_generation(bottom_left_post_1_gif, 300, 8, bottom_left_post_1_end_frame, 'no_goal')
-        main_screen()
+        single_player_loop()
 
 ########################################################################################################################
 
 ########################################################################################################################
 ########################################################################################################################
 
-def gif_generation(gif, speed, gif_end_frame, gif_end_frame_sprite, goal = 0, sound = 0):
-
+def gif_generation(gif, speed, gif_end_frame, gif_end_frame_sprite, goal = None, sound = None):
 
     moveSprite(gif, gif_x_coord_top_left_corner, gif_y_coord_top_left_corner)  # pass gif thru the function, true references the centre of the sprite, so it appears at the coordinate at the middle of the sprite, no true means sprite is placed at top left corner
     showSprite(gif)
@@ -498,7 +500,7 @@ def gif_generation(gif, speed, gif_end_frame, gif_end_frame_sprite, goal = 0, so
             frame = (frame + 1)  # keep increasing the frame by one
             nextFrame += speed  # this controls the speed of the gif
             if frame == 3:
-                if sound == 0:
+                if sound == None:
                     pass
                 else:
                     sound.play()
@@ -506,13 +508,13 @@ def gif_generation(gif, speed, gif_end_frame, gif_end_frame_sprite, goal = 0, so
                 fade(gif_end_frame_sprite, gif_x_coord_top_left_corner, gif_y_coord_top_left_corner)
                 killSprite(gif)
                 penalty_tracker_box_updater(goal)
-                main_screen()  # ending the gif and calling main_screen to go back to the selection screen
+                single_player_loop()  # ending the gif and calling main_screen to go back to the selection screen
         changeSpriteImage(gif, frame)
 
 ########################################################################################################################
 ########################################################################################################################
 
-def main_screen():
+def single_player_loop():
 
     #background_music = mixer.music.load('champions_league_anthem.mp3')
     #mixer.music.play(-1) #runs music in a loop
@@ -627,4 +629,83 @@ def main_screen():
 ########################################################################################################################
 
 
-main_screen()
+# single_player_loop()
+
+########################################################################################################################
+
+########################################### Game type interface ########################################################
+
+select_menu_x_coord = 800
+select_menu_y_coord = 800
+
+select_menu = pygame.display.set_mode((select_menu_x_coord,select_menu_y_coord))
+select_menu.fill(white)
+
+class button():
+    def __init__(self, color, x, y, width, height, text=''):
+        self.color = color
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+        self.text = text
+
+    def draw(self, win, outline=None):
+        # Call this method to draw the button on the screen
+        if outline:
+            pygame.draw.rect(win, outline, (self.x - 2, self.y - 2, self.width + 4, self.height + 4), 0)
+
+        pygame.draw.rect(win, self.color, (self.x, self.y, self.width, self.height), 0)
+
+        if self.text != '':
+            font = pygame.font.SysFont('comicsans', 35)
+            text = font.render(self.text, 1, (0, 0, 0))
+            win.blit(text, (self.x + (self.width / 2 - text.get_width() / 2), self.y + (self.height / 2 - text.get_height() / 2)))
+
+    def isOver(self, mouse):
+        # Mouse is the mouse position or a tuple of (x,y) coordinates
+        if mouse[0] > self.x and mouse[0] < self.x + self.width:
+            if mouse[1] > self.y and mouse[1] < self.y + self.height:
+                return True
+
+        return False
+
+def redraw_select_menu():
+    select_menu.fill(white)
+    single_player_button.draw(select_menu, (0,0,0))
+    head_to_head_button.draw(select_menu, (0,0,0))
+
+run = True
+single_player_button = button(green, select_menu_x_coord/8, select_menu_y_coord * 0.75, 250, 100, 'Single Player')
+head_to_head_button = button(blue, select_menu_x_coord/4, select_menu_y_coord * 0.5, 250, 100, 'Head to Head')
+while run:
+    redraw_select_menu()
+    pygame.display.update()
+    for event in pygame.event.get():
+        
+        mouse = pygame.mouse.get_pos()
+        print(mouse)
+
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if single_player_button.isOver(mouse):
+                print('single player game started')
+                single_player_loop()
+
+        if event.type == pygame.MOUSEMOTION:
+            if single_player_button.isOver(mouse):
+                single_player_button.color = (red)
+            else:
+                single_player_button.color = (green)
+
+            if head_to_head_button.isOver(mouse):
+                head_to_head_button.color = (violet)
+            else:
+                head_to_head_button.color = (blue)
+
+        if event.type == pygame.QUIT:  # this allow the user to quit, pygame.QUIT is a pygame function (hitting the x in the top left)
+            pygame.quit()
+            sys.exit()
+        if event.type == pygame.KEYDOWN:  # This gets any event that is happening on the screen, where is the mouse clicking, keys presses EVERYTHING
+            if event.key == K_ESCAPE:
+                pygame.quit()
+                sys.exit()
