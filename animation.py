@@ -349,23 +349,17 @@ def penalty_tracker_box(*args):
         if args[0].single_player_game_count == 1:
             gameDisplay.blit(single_player_penalty_table_tracker[0], (penalty_tracker_box_x_coord + icon_x_coord_offset[0], penalty_tracker_box_y_coord + icon_y_coord_offset))
         elif args[0].single_player_game_count == 2:
-            gameDisplay.blit(single_player_penalty_table_tracker[0], (penalty_tracker_box_x_coord + icon_x_coord_offset[0], penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(single_player_penalty_table_tracker[1], (penalty_tracker_box_x_coord + icon_x_coord_offset[1], penalty_tracker_box_y_coord + icon_y_coord_offset))
+            for index in range(0,2):
+                gameDisplay.blit(single_player_penalty_table_tracker[index], (penalty_tracker_box_x_coord + icon_x_coord_offset[index], penalty_tracker_box_y_coord + icon_y_coord_offset))
         elif args[0].single_player_game_count == 3:
-            gameDisplay.blit(single_player_penalty_table_tracker[0], (penalty_tracker_box_x_coord + icon_x_coord_offset[0], penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(single_player_penalty_table_tracker[1], (penalty_tracker_box_x_coord + icon_x_coord_offset[1], penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(single_player_penalty_table_tracker[2], (penalty_tracker_box_x_coord + icon_x_coord_offset[2], penalty_tracker_box_y_coord + icon_y_coord_offset))
+            for index in range(0, 3):
+                gameDisplay.blit(single_player_penalty_table_tracker[index], (penalty_tracker_box_x_coord + icon_x_coord_offset[index], penalty_tracker_box_y_coord + icon_y_coord_offset))
         elif args[0].single_player_game_count == 4:
-            gameDisplay.blit(single_player_penalty_table_tracker[0], (penalty_tracker_box_x_coord + icon_x_coord_offset[0], penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(single_player_penalty_table_tracker[1], (penalty_tracker_box_x_coord + icon_x_coord_offset[1], penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(single_player_penalty_table_tracker[2], (penalty_tracker_box_x_coord + icon_x_coord_offset[2], penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(single_player_penalty_table_tracker[3], (penalty_tracker_box_x_coord + icon_x_coord_offset[3], penalty_tracker_box_y_coord + icon_y_coord_offset))
+            for index in range(0, 4):
+                gameDisplay.blit(single_player_penalty_table_tracker[index], (penalty_tracker_box_x_coord + icon_x_coord_offset[index], penalty_tracker_box_y_coord + icon_y_coord_offset))
         elif args[0].single_player_game_count == 5:
-            gameDisplay.blit(single_player_penalty_table_tracker[0], (penalty_tracker_box_x_coord + icon_x_coord_offset[0], penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(single_player_penalty_table_tracker[1], (penalty_tracker_box_x_coord + icon_x_coord_offset[1], penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(single_player_penalty_table_tracker[2], (penalty_tracker_box_x_coord + icon_x_coord_offset[2], penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(single_player_penalty_table_tracker[3], (penalty_tracker_box_x_coord + icon_x_coord_offset[3], penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(single_player_penalty_table_tracker[4], (penalty_tracker_box_x_coord + icon_x_coord_offset[4], penalty_tracker_box_y_coord + icon_y_coord_offset))
+            for index in range(0, 5):
+                gameDisplay.blit(single_player_penalty_table_tracker[index], (penalty_tracker_box_x_coord + icon_x_coord_offset[index], penalty_tracker_box_y_coord + icon_y_coord_offset))
 
     elif args[0] == head_to_head_player_1_counters and args[1] == head_to_head_player_2_counters:
 
@@ -390,94 +384,66 @@ def penalty_tracker_box(*args):
 
         elif args[0].head_to_head_game_count == 3:
 
-            gameDisplay.blit(head_to_head_player_1_penalty_table_tracker[0], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[0], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(head_to_head_player_1_penalty_table_tracker[1], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[1], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
+            for index in range(0, 2):
+                gameDisplay.blit(head_to_head_player_1_penalty_table_tracker[index], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[index], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
 
             gameDisplay.blit(head_to_head_player_2_penalty_table_tracker[0], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[0], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
 
         elif args[0].head_to_head_game_count == 4:
 
-            gameDisplay.blit(head_to_head_player_1_penalty_table_tracker[0], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[0], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(head_to_head_player_1_penalty_table_tracker[1], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[1], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-
-            gameDisplay.blit(head_to_head_player_2_penalty_table_tracker[0], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[0], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(head_to_head_player_2_penalty_table_tracker[1], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[1], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
+            for index in range(0, 2):
+                gameDisplay.blit(head_to_head_player_1_penalty_table_tracker[index], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[index], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
+                gameDisplay.blit(head_to_head_player_2_penalty_table_tracker[index], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[index], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
 
         elif args[0].head_to_head_game_count == 5:
 
-            gameDisplay.blit(head_to_head_player_1_penalty_table_tracker[0], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[0], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(head_to_head_player_1_penalty_table_tracker[1], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[1], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(head_to_head_player_1_penalty_table_tracker[2], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[2], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
+            for index in range(0, 3):
+                gameDisplay.blit(head_to_head_player_1_penalty_table_tracker[index], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[index], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
 
-            gameDisplay.blit(head_to_head_player_2_penalty_table_tracker[0], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[0], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(head_to_head_player_2_penalty_table_tracker[1], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[1], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
+            for index in range(0, 2):
+                gameDisplay.blit(head_to_head_player_2_penalty_table_tracker[index], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[index], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
 
         elif args[0].head_to_head_game_count == 6:
 
-            gameDisplay.blit(head_to_head_player_1_penalty_table_tracker[0], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[0], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(head_to_head_player_1_penalty_table_tracker[1], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[1], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(head_to_head_player_1_penalty_table_tracker[2], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[2], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-
-            gameDisplay.blit(head_to_head_player_2_penalty_table_tracker[0], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[0], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(head_to_head_player_2_penalty_table_tracker[1], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[1], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(head_to_head_player_2_penalty_table_tracker[2], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[2], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
+            for index in range(0, 3):
+                gameDisplay.blit(head_to_head_player_1_penalty_table_tracker[index], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[index], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
+                gameDisplay.blit(head_to_head_player_2_penalty_table_tracker[index], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[index], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
 
         elif args[0].head_to_head_game_count == 7:
 
-            gameDisplay.blit(head_to_head_player_1_penalty_table_tracker[0], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[0], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(head_to_head_player_1_penalty_table_tracker[1], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[1], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(head_to_head_player_1_penalty_table_tracker[2], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[2], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(head_to_head_player_1_penalty_table_tracker[3], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[3], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
+            for index in range(0, 4):
+                gameDisplay.blit(head_to_head_player_1_penalty_table_tracker[index], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[index], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
 
-            gameDisplay.blit(head_to_head_player_2_penalty_table_tracker[0], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[0], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(head_to_head_player_2_penalty_table_tracker[1], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[1], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(head_to_head_player_2_penalty_table_tracker[2], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[2], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-
+            for index in range(0, 3):
+                gameDisplay.blit(head_to_head_player_2_penalty_table_tracker[index], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[index], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
 
         elif args[0].head_to_head_game_count == 8:
 
-            gameDisplay.blit(head_to_head_player_1_penalty_table_tracker[0], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[0], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(head_to_head_player_1_penalty_table_tracker[1], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[1], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(head_to_head_player_1_penalty_table_tracker[2], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[2], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(head_to_head_player_1_penalty_table_tracker[3], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[3], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-
-            gameDisplay.blit(head_to_head_player_2_penalty_table_tracker[0], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[0], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(head_to_head_player_2_penalty_table_tracker[1], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[1], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(head_to_head_player_2_penalty_table_tracker[2], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[2], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(head_to_head_player_2_penalty_table_tracker[3], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[3], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
+            for index in range(0, 4):
+                gameDisplay.blit(head_to_head_player_1_penalty_table_tracker[index], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[index], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
+                gameDisplay.blit(head_to_head_player_2_penalty_table_tracker[index], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[index], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
 
         elif args[0].head_to_head_game_count == 9:
 
-            gameDisplay.blit(head_to_head_player_1_penalty_table_tracker[0], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[0], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(head_to_head_player_1_penalty_table_tracker[1], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[1], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(head_to_head_player_1_penalty_table_tracker[2], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[2], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(head_to_head_player_1_penalty_table_tracker[3], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[3], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(head_to_head_player_1_penalty_table_tracker[4], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[4], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
+            for index in range(0, 5):
+                gameDisplay.blit(head_to_head_player_1_penalty_table_tracker[index], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[index], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
 
-            gameDisplay.blit(head_to_head_player_2_penalty_table_tracker[0], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[0], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(head_to_head_player_2_penalty_table_tracker[1], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[1], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(head_to_head_player_2_penalty_table_tracker[2], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[2], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(head_to_head_player_2_penalty_table_tracker[3], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[3], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
+            for index in range(0, 4):
+                gameDisplay.blit(head_to_head_player_2_penalty_table_tracker[index], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[index], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
 
         elif args[0].head_to_head_game_count == 10:
 
-            gameDisplay.blit(head_to_head_player_1_penalty_table_tracker[0], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[0], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(head_to_head_player_1_penalty_table_tracker[1], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[1], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(head_to_head_player_1_penalty_table_tracker[2], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[2], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(head_to_head_player_1_penalty_table_tracker[3], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[3], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(head_to_head_player_1_penalty_table_tracker[4], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[4], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
+            for index in range(0, 5):
+                gameDisplay.blit(head_to_head_player_1_penalty_table_tracker[index], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[index], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
 
-            gameDisplay.blit(head_to_head_player_2_penalty_table_tracker[0], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[0], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(head_to_head_player_2_penalty_table_tracker[1], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[1], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(head_to_head_player_2_penalty_table_tracker[2], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[2], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(head_to_head_player_2_penalty_table_tracker[3], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[3], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-            gameDisplay.blit(head_to_head_player_2_penalty_table_tracker[4], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[4], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
+            for index in range(0, 5):
+                gameDisplay.blit(head_to_head_player_2_penalty_table_tracker[index], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[index], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
 
 def penalty_tracker_box_updater(outcome, counter_type):
 
     if counter_type == single_player_counters:
         if outcome == 'goal':
-            single_player_penalty_table_tracker[counter_type.single_player_game_count - 1] = green_ball # minus 1 because game count is 1 and next index will be zero
+            single_player_penalty_table_tracker[counter_type.single_player_game_count - 1] = green_ball
         elif outcome == 'no_goal':
             single_player_penalty_table_tracker[counter_type.single_player_game_count - 1] = red_x
 
@@ -489,7 +455,7 @@ def penalty_tracker_box_updater(outcome, counter_type):
 
     elif counter_type == head_to_head_player_2_counters:
         if outcome == 'goal':
-            head_to_head_player_2_penalty_table_tracker[counter_type.player_game_count - 1] = green_ball # minus 2 because game count is always even for player 2's turn
+            head_to_head_player_2_penalty_table_tracker[counter_type.player_game_count - 1] = green_ball
         elif outcome == 'no_goal':
             head_to_head_player_2_penalty_table_tracker[counter_type.player_game_count - 1] = red_x
 
@@ -730,6 +696,7 @@ def gif_generation(gif, speed, gif_end_frame, gif_end_frame_sprite, counter_type
 def single_player_loop():
 
     return_to_menu_button = button(green, 29, 697, 250, 100, 'Return to menu')
+    click = False
     #background_music = mixer.music.load('champions_league_anthem.mp3')
     #mixer.music.play(-1) #runs music in a loop
     while single_player_counters.single_player_game_count < 10:
@@ -852,7 +819,8 @@ def single_player_loop():
 
 def head_to_head_loop():
     # background_music = mixer.music.load('champions_league_anthem.mp3')
-    # mixer.music.play(-1) #runs music in a loop
+    # mixer.music.play(-1) #runs music in a loop]
+    click = False
     return_to_menu_button = button(green, 29, 697, 250, 100, 'Return to menu')
     
     if head_to_head_player_1_counters.head_to_head_game_count % 2 == 0: #if game count is odd
