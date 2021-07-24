@@ -229,40 +229,30 @@ class Counter():
         self.goal_tracker = ['','','','','']
 
     def goal_score(self):
-        Counter.head_to_head_game_count += 1
-        Counter.single_player_game_count += 1
         self.goal_count += 1
         self.player_game_count += 1
 
         return self.goal_count
 
     def save_made(self):
-        Counter.head_to_head_game_count += 1
-        Counter.single_player_game_count += 1
         self.save_count += 1
         self.player_game_count += 1
 
         return self.save_count
 
     def post_hit(self):
-        Counter.head_to_head_game_count += 1
-        Counter.single_player_game_count += 1
         self.post_count += 1
         self.player_game_count += 1
 
         return self.post_count
 
     def crossbar_hit(self):
-        Counter.head_to_head_game_count += 1
-        Counter.single_player_game_count += 1
         self.crossbar_count += 1
         self.player_game_count += 1
 
         return self.crossbar_count
 
     def complete_miss(self):
-        Counter.head_to_head_game_count += 1
-        Counter.single_player_game_count += 1
         self.miss_count += 1
         self.player_game_count += 1
 
@@ -270,6 +260,15 @@ class Counter():
 
     def __str__(self):
         return f'I am the counter of {self.player}'
+
+    @classmethod
+    def increase_head_to_head_game_counter(cls):
+        cls.head_to_head_game_count += 1
+
+    @classmethod
+    def increase_single_player_game_counter(cls):
+        cls.single_player_game_count += 1
+
 
 
 single_player_counters = Counter('single player mode')
@@ -443,18 +442,21 @@ def penalty_tracker_box(*args):
 def penalty_tracker_box_updater(outcome, counter_type):
 
     if counter_type == single_player_counters:
+        Counter.increase_single_player_game_counter()
         if outcome == 'goal':
             single_player_penalty_table_tracker[counter_type.single_player_game_count - 1] = green_ball
         elif outcome == 'no_goal':
             single_player_penalty_table_tracker[counter_type.single_player_game_count - 1] = red_x
 
     elif counter_type == head_to_head_player_1_counters:
+        Counter.increase_head_to_head_game_counter()
         if outcome == 'goal':
             head_to_head_player_1_penalty_table_tracker[counter_type.player_game_count - 1] = green_ball
         elif outcome == 'no_goal':
             head_to_head_player_1_penalty_table_tracker[counter_type.player_game_count - 1] = red_x
 
     elif counter_type == head_to_head_player_2_counters:
+        Counter.increase_head_to_head_game_counter()
         if outcome == 'goal':
             head_to_head_player_2_penalty_table_tracker[counter_type.player_game_count - 1] = green_ball
         elif outcome == 'no_goal':
