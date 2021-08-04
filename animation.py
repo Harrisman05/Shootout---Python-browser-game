@@ -268,6 +268,8 @@ class Counter():
         self.player_game_count = 0
         self.goal_tracker = ['','','','','']
         self.gif_table = ['', '', '', '', '']
+        Counter.reset_head_to_head_game_counter()
+
 
     def __str__(self):
         return f'I am the counter of {self.player}'
@@ -283,6 +285,10 @@ class Counter():
     @classmethod
     def sudden_death_initiate(cls):
         cls.sudden_death = True
+
+    @classmethod
+    def reset_head_to_head_game_counter(cls):
+        cls.head_to_head_game_count = 0
 
 
 single_player_counters = Counter('single player mode')
@@ -394,20 +400,20 @@ def penalty_tracker_box(*args):
 
             gameDisplay.blit(args[0].gif_table[0], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[0], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
 
-            gameDisplay.blit(args[0].gif_table[0], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[0], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
+            gameDisplay.blit(args[1].gif_table[0], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[0], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
 
         elif args[0].head_to_head_game_count == 3:
 
             for index in range(0, 2):
                 gameDisplay.blit(args[0].gif_table[index], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[index], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
 
-            gameDisplay.blit(args[0].gif_table[0], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[0], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
+            gameDisplay.blit(args[1].gif_table[0], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[0], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
 
         elif args[0].head_to_head_game_count == 4:
 
             for index in range(0, 2):
                 gameDisplay.blit(args[0].gif_table[index], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[index], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-                gameDisplay.blit(args[0].gif_table[index], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[index], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
+                gameDisplay.blit(args[1].gif_table[index], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[index], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
 
         elif args[0].head_to_head_game_count == 5:
 
@@ -415,13 +421,13 @@ def penalty_tracker_box(*args):
                 gameDisplay.blit(args[0].gif_table[index], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[index], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
 
             for index in range(0, 2):
-                gameDisplay.blit(args[0].gif_table[index], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[index], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
+                gameDisplay.blit(args[1].gif_table[index], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[index], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
 
         elif args[0].head_to_head_game_count == 6:
 
             for index in range(0, 3):
                 gameDisplay.blit(args[0].gif_table[index], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[index], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-                gameDisplay.blit(args[0].gif_table[index], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[index], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
+                gameDisplay.blit(args[1].gif_table[index], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[index], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
 
         elif args[0].head_to_head_game_count == 7:
 
@@ -429,13 +435,13 @@ def penalty_tracker_box(*args):
                 gameDisplay.blit(args[0].gif_table[index], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[index], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
 
             for index in range(0, 3):
-                gameDisplay.blit(args[0].gif_table[index], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[index], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
+                gameDisplay.blit(args[1].gif_table[index], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[index], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
 
         elif args[0].head_to_head_game_count == 8:
 
             for index in range(0, 4):
                 gameDisplay.blit(args[0].gif_table[index], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[index], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
-                gameDisplay.blit(args[0].gif_table[index], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[index], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
+                gameDisplay.blit(args[1].gif_table[index], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[index], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
 
         elif args[0].head_to_head_game_count == 9:
 
@@ -443,7 +449,7 @@ def penalty_tracker_box(*args):
                 gameDisplay.blit(args[0].gif_table[index], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[index], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
 
             for index in range(0, 4):
-                gameDisplay.blit(args[0].gif_table[index], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[index], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
+                gameDisplay.blit(args[1].gif_table[index], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[index], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
 
         elif args[0].head_to_head_game_count == 10:
 
@@ -451,9 +457,14 @@ def penalty_tracker_box(*args):
                 gameDisplay.blit(args[0].gif_table[index], (player_1_penalty_tracker_box_x_coord + icon_x_coord_offset[index], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
 
             for index in range(0, 5):
-                gameDisplay.blit(args[0].gif_table[index], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[index], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
+                gameDisplay.blit(args[1].gif_table[index], (player_2_penalty_tracker_box_x_coord + icon_x_coord_offset[index], player_1and2_penalty_tracker_box_y_coord + icon_y_coord_offset))
 
 def penalty_tracker_box_updater(outcome, counter_type):
+
+    if counter_type.player_game_count == 6:
+        counter_type.player_game_count = 0
+    else:
+        pass
 
     if counter_type == single_player_counters:
         Counter.increase_single_player_game_counter()
@@ -465,9 +476,6 @@ def penalty_tracker_box_updater(outcome, counter_type):
     elif counter_type == head_to_head_player_1_counters:
         Counter.increase_head_to_head_game_counter()
         if outcome == 'goal':
-            print(counter_type.player_game_count)
-            print(counter_type.goal_tracker)
-            print(counter_type.gif_table)
             counter_type.gif_table[counter_type.player_game_count - 1] = green_ball
         elif outcome == 'no_goal':
             counter_type.gif_table[counter_type.player_game_count - 1] = red_x
@@ -550,11 +558,6 @@ def outcome_calculator(player1 = None, player2 = None):
 
     elif Counter.sudden_death == True:
 
-        #if player_2_shot_counter == 5:
-
-            #player1.goal_tracker_reset()
-            #player2.goal_tracker_reset()
-
         if player_1_shot_counter == player_2_shot_counter:
 
             if player_1_goals > player_2_goals:
@@ -598,7 +601,7 @@ def game_logic(counter_type, single_player_choice = None, head_to_head_player_1_
     choice_evaluator = game_type_assessor(single_player_choice, head_to_head_player_1_choice, head_to_head_player_2_choice)
 
 #                                                   bl    tl    bm    tm    br    tr   post  cbar  miss
-    goalie_choice = random.choices(areas, weights=[1112, 0.12, 0.12, 0.12, 0.12, 0.12, 0.11, 0.11, 0.06], k=1)
+    goalie_choice = random.choices(areas, weights = [0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.11, 0.11, 0.06], k=1)
     goalie_choice = goalie_choice[0]
     killSprite(Shot_selection_gif)
 
@@ -1083,6 +1086,8 @@ def head_to_head_loop():
             print(head_to_head_player_1_counters.goal_tracker)
             print('')
             print(head_to_head_player_2_counters.goal_tracker)
+            print(head_to_head_player_2_counters.gif_table)
+            #print(head_to_head_player_2_counters.
             print('')
             print(Counter.sudden_death)
 
@@ -1100,7 +1105,6 @@ def sudden_death_loop():
     if Counter.head_to_head_game_count == 11:
         head_to_head_player_1_counters.goal_tracker_reset()
         head_to_head_player_2_counters.goal_tracker_reset()
-
 
     if head_to_head_player_1_counters.head_to_head_game_count % 2 == 0:  # if game count is odd
         selected_player_counter = head_to_head_player_1_counters
