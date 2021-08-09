@@ -28,7 +28,7 @@ gif_y_coord_top_left_corner = (display_width / 2) - 180
 gameDisplay = pygame.display.set_mode((display_width, display_height))
 gameDisplay.blit(background, (0, 0))
 click = False
-gif_speed = 1
+gif_speed = 5
 
 black = (0, 0, 0)
 green = (0, 255, 0)
@@ -814,7 +814,7 @@ def gif_generation(gif, speed, gif_end_frame, gif_end_frame_sprite, counter_type
                     if Counter.sudden_death == False:
                         head_to_head_loop()# ending the gif and calling main_screen to go back to the selection screen
                     elif Counter.sudden_death == True:
-                            sudden_death_loop()
+                        sudden_death_loop()
 
         changeSpriteImage(gif, frame)
 
@@ -1112,10 +1112,6 @@ def sudden_death_loop():
     click = False
     return_to_menu_button = button(green, 29, 697, 250, 100, 'Return to menu')
 
-    if Counter.head_to_head_game_count == 11:
-        head_to_head_player_1_counters.goal_tracker_reset()
-        head_to_head_player_2_counters.goal_tracker_reset()
-
     if head_to_head_player_1_counters.head_to_head_game_count % 2 == 0:  # if game count is odd
         selected_player_counter = head_to_head_player_1_counters
         selected_player_choice = head_to_head_player_1_choice
@@ -1258,16 +1254,20 @@ def sudden_death_loop():
             outcome_calculator(head_to_head_player_1_counters, head_to_head_player_2_counters)
 
             return_to_menu_button.draw(background, (0, 0, 0))
-            print(Counter.head_to_head_game_count)
-            print(head_to_head_player_1_counters.goal_tracker)
-            print('')
-            print(head_to_head_player_2_counters.goal_tracker)
-            print('')
-            print(head_to_head_player_1_counters.player_game_count)
-            print(head_to_head_player_2_counters.player_game_count)
-            print(head_to_head_player_1_counters.gif_table)
-            print(head_to_head_player_1_counters.gif_table)
-            print(Counter.head_to_head_game_count)
+            # print(Counter.head_to_head_game_count)
+            # print(head_to_head_player_1_counters.goal_tracker)
+            # print('')
+            # print(head_to_head_player_2_counters.goal_tracker)
+            # print('')
+            # print(head_to_head_player_1_counters.player_game_count)
+            # print(head_to_head_player_2_counters.player_game_count)
+            # print(head_to_head_player_1_counters.gif_table)
+            # print(head_to_head_player_1_counters.gif_table)
+            # print(Counter.head_to_head_game_count)
+            if Counter.head_to_head_game_count == 10:
+                time.sleep(5)
+                head_to_head_player_1_counters.goal_tracker_reset()
+                head_to_head_player_2_counters.goal_tracker_reset()
 
             game_type_label = header_font.render('Sudden Death', True, blue)
             gameDisplay.blit(game_type_label, (282, 3))
