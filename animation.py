@@ -538,33 +538,31 @@ def outcome_calculator(player1 = None, player2 = None):
 
             if player_1_goals > player_2_goals:
                 print('player 1 wins as he has scored more goals')
-                time.sleep(2)
+                killSprite(Shot_selection_gif)
+                pygame.time.wait(2000)
                 select_menu()
 
             elif player_2_goals > player_1_goals:
                 print('player 2 wins as he has scored more goals')
-                time.sleep(2)
+                killSprite(Shot_selection_gif)
+                pygame.time.wait(2000)
                 select_menu()
 
             elif player_1_goals == player_2_goals or player_1_goals == player_2_goals:
 
-                #print('The shootout ends in a draw')
-                # button(green, 700, 100, 250, 100, 'shootout ends in draw')
-                # player1.reset('player_1')
-                # player2.reset('player_2')
-                # Counter.sudden_death_initiate()
-                #time.sleep(1)
-                #sudden_death_loop()
-                pass
+                print('The shootout ends in a draw')
 
         #if player_1_shot_counter == player_2_shot_counter:
         if player_1_goals > player_2_slots + player_2_goals:
-            select_menu()
             print('player 1 wins as player 2 does not have enough shots remaining')
-
-        elif player_2_goals > player_1_slots + player_1_goals:
+            killSprite(Shot_selection_gif)
+            pygame.time.wait(2000)
             select_menu()
+        elif player_2_goals > player_1_slots + player_1_goals:
             print('player 2 wins as player 1 does not have enough shots remaining')
+            killSprite(Shot_selection_gif)
+            pygame.time.wait(2000)
+            select_menu()
 
     elif Counter.sudden_death == True:
 
@@ -1264,7 +1262,6 @@ def sudden_death_loop():
             gameDisplay.blit(game_type_label, (282, 3))
 
             if Counter.head_to_head_game_count == 10:
-                pygame.time.wait(2000)
                 killSprite(Shot_selection_gif) # have to kill sprite in order for last ball to appear in ball 2 outcome box (for some reason?)
                 pygame.time.wait(2000)
                 head_to_head_player_1_counters.goal_tracker_reset()
