@@ -548,13 +548,14 @@ def outcome_calculator(player1 = None, player2 = None):
 
             elif player_1_goals == player_2_goals or player_1_goals == player_2_goals:
 
-                print('The shootout ends in a draw')
-                button(green, 700, 100, 250, 100, 'shootout ends in draw')
-                player1.reset('player_1')
-                player2.reset('player_2')
-                Counter.sudden_death_initiate()
-                time.sleep(2)
-                sudden_death_loop()
+                #print('The shootout ends in a draw')
+                # button(green, 700, 100, 250, 100, 'shootout ends in draw')
+                # player1.reset('player_1')
+                # player2.reset('player_2')
+                # Counter.sudden_death_initiate()
+                #time.sleep(1)
+                #sudden_death_loop()
+                pass
 
         #if player_1_shot_counter == player_2_shot_counter:
         if player_1_goals > player_2_slots + player_2_goals:
@@ -574,12 +575,6 @@ def outcome_calculator(player1 = None, player2 = None):
 
             elif player_2_goals > player_1_goals:
                 print('Sudden death, player 2 wins')
-
-
-
-
-
-
 
 def fade(gif_end_frame_sprite, width, height):
 
@@ -1084,6 +1079,7 @@ def head_to_head_loop():
                 nextFrame += 30  # this controls the speed of the gif
                 if frame == 28:
                     frame = 0  # resetting the gif once it reaches the end
+
             changeSpriteImage(Shot_selection_gif, frame)
 
             score_counters(head_to_head_player_1_counters, head_to_head_player_2_counters)
@@ -1101,6 +1097,11 @@ def head_to_head_loop():
             print('')
             print(Counter.sudden_death)
 
+            if head_to_head_player_2_counters.player_game_count == 5:
+                Counter.sudden_death_initiate()
+                print('sudden death started within head to head')
+                sudden_death_loop()
+
             game_type_label = header_font.render('Head to Head', True, blue)
             gameDisplay.blit(game_type_label, (282, 3))
 
@@ -1109,6 +1110,7 @@ def head_to_head_loop():
 def sudden_death_loop():
     # background_music = mixer.music.load('champions_league_anthem.mp3')
     # mixer.music.play(-1) #runs music in a loop]
+
     click = False
     return_to_menu_button = button(green, 29, 697, 250, 100, 'Return to menu')
 
@@ -1254,23 +1256,20 @@ def sudden_death_loop():
             outcome_calculator(head_to_head_player_1_counters, head_to_head_player_2_counters)
 
             return_to_menu_button.draw(background, (0, 0, 0))
-            # print(Counter.head_to_head_game_count)
-            # print(head_to_head_player_1_counters.goal_tracker)
-            # print('')
-            # print(head_to_head_player_2_counters.goal_tracker)
-            # print('')
-            # print(head_to_head_player_1_counters.player_game_count)
-            # print(head_to_head_player_2_counters.player_game_count)
-            # print(head_to_head_player_1_counters.gif_table)
-            # print(head_to_head_player_1_counters.gif_table)
-            # print(Counter.head_to_head_game_count)
-            if Counter.head_to_head_game_count == 10:
-                time.sleep(5)
-                head_to_head_player_1_counters.goal_tracker_reset()
-                head_to_head_player_2_counters.goal_tracker_reset()
+
+            print(Counter.sudden_death)
+            print(head_to_head_player_2_counters.goal_tracker)
 
             game_type_label = header_font.render('Sudden Death', True, blue)
             gameDisplay.blit(game_type_label, (282, 3))
+
+            if Counter.head_to_head_game_count == 10:
+                pygame.time.wait(2000)
+                killSprite(Shot_selection_gif) # have to kill sprite in order for last ball to appear in ball 2 outcome box (for some reason?)
+                pygame.time.wait(2000)
+                head_to_head_player_1_counters.goal_tracker_reset()
+                head_to_head_player_2_counters.goal_tracker_reset()
+                sudden_death_loop()
 
 ########################################################################################################################
 
