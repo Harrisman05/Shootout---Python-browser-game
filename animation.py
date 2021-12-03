@@ -603,7 +603,7 @@ def game_logic(counter_type, single_player_choice = None, head_to_head_player_1_
     global gif_speed
     choice_evaluator = game_type_assessor(single_player_choice, head_to_head_player_1_choice, head_to_head_player_2_choice)
 #                                                   bl    tl    bm    tm    br    tr   post  cbar  miss
-    goalie_choice = random.choices(areas, weights = [1112, 0.12, 0.12, 0.12, 0.12, 0.12, 0.11, 0.11, 0.06], k=1)
+    goalie_choice = random.choices(areas, weights = [0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.11, 0.11, 0.06], k=1)
     goalie_choice = goalie_choice[0]
     killSprite(Shot_selection_gif)
 
