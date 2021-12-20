@@ -1,4 +1,3 @@
-
 ##################### TESTING BRANCH ####################
 import pygame, sys
 import random
@@ -6,20 +5,11 @@ from pygame_functions import *
 from pygame.locals import *
 import pyinputplus as pyip
 from pygame import mixer
-import moviepy
-from moviepy.editor import VideoFileClip, AudioFileClip
 import time
+
 pygame.init() # intialise pygame
-
-def clip():
-    clip = VideoFileClip('Pirlo_penalty.mp4')
-    clip = clip.resize((800, 800))
-    clip.preview()
-
-#clip() # the intro clip
-
 screenSize(800, 800)
-setBackgroundImage('gifs/background.jpeg')
+#setBackgroundImage('gifs/background.jpeg')
 background = pygame.image.load('gifs/background.jpeg')  # loading of the background image
 display_width = 800
 display_height = 800
