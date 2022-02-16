@@ -9,6 +9,7 @@ import time
 
 
 pygame.init() # intialise pygame
+print(pygame.font.get_fonts())
 icon = pygame.image.load('images/icon.png')
 pygame.display.set_icon(icon)
 screenSize(800, 800)
