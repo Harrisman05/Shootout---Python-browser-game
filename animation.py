@@ -7,8 +7,12 @@ import pyinputplus as pyip
 from pygame import mixer
 import time
 
+
 pygame.init() # intialise pygame
+icon = pygame.image.load('images/icon.png')
+pygame.display.set_icon(icon)
 screenSize(800, 800)
+pygame.display.set_caption('Shootout')
 #setBackgroundImage('gifs/background.jpeg')
 background = pygame.image.load('gifs/background.jpeg')  # loading of the background image
 display_width = 800
@@ -19,6 +23,7 @@ gameDisplay = pygame.display.set_mode((display_width, display_height))
 gameDisplay.blit(background, (0, 0))
 click = False
 gif_speed = 300
+
 
 black = (0, 0, 0)
 green = (0, 255, 0)
