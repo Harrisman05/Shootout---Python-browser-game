@@ -9,7 +9,7 @@ import time
 
 
 pygame.init() # intialise pygame
-print(pygame.font.get_fonts())
+# print(pygame.font.get_fonts())
 icon = pygame.image.load('images/icon.png')
 pygame.display.set_icon(icon)
 screenSize(800, 800)
@@ -33,6 +33,7 @@ white = (255, 255, 255)
 blue = 	(0,0,255)
 violet = (127, 0, 255)
 dark_green = (0,100,0)
+pink = (248, 191, 191)
 nextFrame = clock() #time at which next frame will appear`
 frame = 0 #current frame of animation, set to zero as that is the index of the first frame
 tick(60)
@@ -550,12 +551,12 @@ def outcome_calculator(player1 = None, player2 = None):
 
         #if player_1_shot_counter == player_2_shot_counter:
         if player_1_goals > player_2_slots + player_2_goals:
-            print('player 1 wins as player 2 does not have enough shots remaining')
+            # print('player 1 wins as player 2 does not have enough shots remaining')
             killSprite(Shot_selection_gif)
             pygame.time.wait(2000)
             select_menu()
         elif player_2_goals > player_1_slots + player_1_goals:
-            print('player 2 wins as player 1 does not have enough shots remaining')
+            # print('player 2 wins as player 1 does not have enough shots remaining')
             killSprite(Shot_selection_gif)
             pygame.time.wait(2000)
             select_menu()
@@ -599,7 +600,7 @@ def game_logic(counter_type, single_player_choice = None, head_to_head_player_1_
     global gif_speed
     choice_evaluator = game_type_assessor(single_player_choice, head_to_head_player_1_choice, head_to_head_player_2_choice)
 #                                                   bl    tl    bm    tm    br    tr   post  cbar  miss
-    goalie_choice = random.choices(areas, weights = [1112, 0.12, 0.12, 0.12, 0.12, 0.12, 0.11, 0.11, 0.06], k=1)
+    goalie_choice = random.choices(areas, weights=[0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.11, 0.11, 0.06], k=1)
     goalie_choice = goalie_choice[0]
     killSprite(Shot_selection_gif)
 
@@ -850,7 +851,7 @@ def single_player_loop():
                     else:
                         return_to_menu_button.color = (green)
                 mouse = pygame.mouse.get_pos()  # mouse needs to be in the for event, otherwise it doesn't live update
-                print(mouse)
+                # print(mouse)
 
                 if 355 + 10 > mouse[0] > 355 and 301 + 10 > mouse[1] > 301:  # bottom left
                     if event.type == MOUSEBUTTONDOWN:
@@ -1083,17 +1084,17 @@ def head_to_head_loop():
 
             return_to_menu_button.draw(background, (0, 0, 0))
 
-            print(head_to_head_player_1_counters.goal_tracker)
-            print('')
-            print(head_to_head_player_2_counters.goal_tracker)
-            print(head_to_head_player_2_counters.gif_table)
-            #print(head_to_head_player_2_counters.
-            print('')
-            print(Counter.sudden_death)
+            # print(head_to_head_player_1_counters.goal_tracker)
+            # print('')
+            # print(head_to_head_player_2_counters.goal_tracker)
+            # print(head_to_head_player_2_counters.gif_table)
+            # #print(head_to_head_player_2_counters.
+            # print('')
+            # print(Counter.sudden_death)
 
             if head_to_head_player_2_counters.player_game_count == 5:
                 Counter.sudden_death_initiate()
-                print('sudden death started within head to head')
+                # print('sudden death started within head to head')
                 sudden_death_loop()
 
             game_type_label = header_font.render('Head to Head', True, blue)
@@ -1251,8 +1252,8 @@ def sudden_death_loop():
 
             return_to_menu_button.draw(background, (0, 0, 0))
 
-            print(Counter.sudden_death)
-            print(head_to_head_player_2_counters.goal_tracker)
+            # print(Counter.sudden_death)
+            # print(head_to_head_player_2_counters.goal_tracker)
 
             game_type_label = header_font.render('Sudden Death', True, blue)
             gameDisplay.blit(game_type_label, (282, 3))
@@ -1285,22 +1286,22 @@ def select_menu():
         head_to_head_button.draw(select_menu, (0,0,0))
 
     run = True
-    single_player_button = button(green, select_menu_x_coord/8, select_menu_y_coord * 0.75, 250, 100, 'Single Player')
-    head_to_head_button = button(blue, select_menu_x_coord/4, select_menu_y_coord * 0.5, 250, 100, 'Head to Head')
+    single_player_button = button(green, select_menu_x_coord/3, select_menu_y_coord * 0.25, 250, 100, 'Single Player')
+    head_to_head_button = button(pink, select_menu_x_coord/3, select_menu_y_coord * 0.5, 250, 100, 'Head to Head')
     while run:
         redraw_select_menu()
         pygame.display.update()
         for event in pygame.event.get():
 
             mouse = pygame.mouse.get_pos()
-            print(mouse)
+            # print(mouse)
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if single_player_button.isOver(mouse):
-                    print('single player game started')
+                    # print('single player game started')
                     single_player_loop()
                 elif head_to_head_button.isOver(mouse):
-                    print('head to head game started')
+                    # print('head to head game started')
                     head_to_head_loop()
 
             if event.type == pygame.MOUSEMOTION:
@@ -1312,7 +1313,7 @@ def select_menu():
                 if head_to_head_button.isOver(mouse):
                     head_to_head_button.color = (violet)
                 else:
-                    head_to_head_button.color = (blue)
+                    head_to_head_button.color = (pink)
 
             if event.type == pygame.QUIT:  # this allow the user to quit, pygame.QUIT is a pygame function (hitting the x in the top left)
                 pygame.quit()
