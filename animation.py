@@ -803,8 +803,8 @@ def gif_generation(gif, speed, gif_end_frame, gif_end_frame_sprite, counter_type
                 elif counter_type == head_to_head_player_1_counters or head_to_head_player_2_counters:
                     if Counter.sudden_death == False:
                         head_to_head_loop()# ending the gif and calling main_screen to go back to the selection screen
-                    elif Counter.sudden_death == True:
-                        sudden_death_loop()
+                    # elif Counter.sudden_death == True:
+                    #     sudden_death_loop()
 
         changeSpriteImage(gif, frame)
 
@@ -949,7 +949,7 @@ def head_to_head_loop():
         selected_player_choice = head_to_head_player_2_choice
         player_1_turn = False
 
-    while head_to_head_player_1_counters.head_to_head_game_count <= 10:
+    while head_to_head_player_1_counters.head_to_head_game_count <= 12: # usually 10
 
         moveSprite(Shot_selection_gif, 400, 360, True)
         showSprite(Shot_selection_gif)
@@ -1092,10 +1092,10 @@ def head_to_head_loop():
             # print('')
             # print(Counter.sudden_death)
 
-            if head_to_head_player_2_counters.player_game_count == 5:
-                Counter.sudden_death_initiate()
+            # if head_to_head_player_2_counters.player_game_count == 5:
+                # Counter.sudden_death_initiate()
                 # print('sudden death started within head to head')
-                sudden_death_loop()
+                # sudden_death_loop()
 
             game_type_label = header_font.render('Head to Head', True, blue)
             gameDisplay.blit(game_type_label, (282, 3))
