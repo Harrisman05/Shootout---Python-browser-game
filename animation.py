@@ -746,7 +746,7 @@ def post_hit(counter_type, single_player_choice = None, head_to_head_player_1_ch
     elif choice_evaluator == areas[3]:  # top middle and post paradox
         print('SAVE! The keeper managed to claw the ball away with a finger-tip save!')
         counter_type.save_made()                                                                                            ###no gif
-        gif_generation(bottom_left_post_1_gif, gif_speed, 8, bottom_left_post_1_end_frame, counter_type, 'no_goal')
+        gif_generation(bottom_middle_postparadox_4_gif, gif_speed, 8, bottom_middle_postparadox_4_end_frame, counter_type, 'no_goal')
     elif choice_evaluator == areas[0]:  # hitting the bottom left post
         print('POST! The shot rifles towards the left but thunders off the post!')
         counter_type.post_hit()
@@ -762,7 +762,7 @@ def post_hit(counter_type, single_player_choice = None, head_to_head_player_1_ch
     elif choice_evaluator == areas[5]:  # hitting the top right post
         print('POST! The keeper is motionless as he watches the ball ricochet off the post!')
         counter_type.post_hit()                                                                                             ###no gif
-        gif_generation(bottom_left_post_1_gif, gif_speed, 8, bottom_left_post_1_end_frame, counter_type, 'no_goal')
+        gif_generation(bottom_right_post_1_gif, gif_speed, 8, bottom_right_post_1_end_frame, counter_type, 'no_goal')
 
 ########################################################################################################################
 
