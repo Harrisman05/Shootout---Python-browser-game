@@ -18,6 +18,7 @@ display_height = 800
 gif_x_coord_top_left_corner = (display_width / 2) - 130.5
 gif_y_coord_top_left_corner = (display_width / 2) - 180
 gameDisplay = pygame.display.set_mode((display_width, display_height))
+pygame.display.set_caption('Shootout')
 gameDisplay.blit(background, (0, 0))
 click = False
 gif_speed = 300
