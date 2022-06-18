@@ -20,7 +20,7 @@ gif_y_coord_top_left_corner = (display_width / 2) - 180
 gameDisplay = pygame.display.set_mode((display_width, display_height))
 gameDisplay.blit(background, (0, 0))
 click = False
-gif_speed = 5
+gif_speed = 300
 
 black = (0, 0, 0)
 green = (0, 255, 0)
@@ -789,7 +789,7 @@ def gif_generation(gif, speed, gif_end_frame, gif_end_frame_sprite, counter_type
                 else:
                     sound.play()
             if frame == gif_end_frame:
-                #fade(gif_end_frame_sprite, gif_x_coord_top_left_corner, gif_y_coord_top_left_corner)
+                fade(gif_end_frame_sprite, gif_x_coord_top_left_corner, gif_y_coord_top_left_corner)
                 killSprite(gif)
                 penalty_tracker_box_updater(goal, counter_type)
                 per_shot_table_updater(goal, counter_type)
